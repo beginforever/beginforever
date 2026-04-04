@@ -52,19 +52,21 @@ nav.scrolled{padding:10px 56px;box-shadow:0 4px 30px rgba(59,7,100,.08)}
 /* Form */
 .form-section{padding:80px 24px;max-width:640px;margin:0 auto}
 .form-section h2{font-family:'Cinzel',serif;color:var(--royal);text-align:center;font-size:28px;margin-bottom:8px}
-.form-card{background:white;border-radius:24px;padding:40px;box-shadow:0 10px 60px rgba(59,7,100,.08);border:1px solid rgba(212,160,23,.15)}
-.form-section-label{font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:var(--royal);text-transform:uppercase;letter-spacing:2px;margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--ivory-deep)}.form-section-label:first-child{margin-top:0}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
-.form-field-wrap{display:flex;flex-direction:column;margin-bottom:8px}
-.form-field-wrap label{font-size:13px;font-weight:600;color:var(--body-text);margin-bottom:6px}
-.form-field{width:100%;padding:14px 16px;border:1.5px solid var(--ivory-deep);border-radius:12px;font-family:'Nunito',sans-serif;font-size:15px;color:var(--body-text);background:var(--ivory-warm);transition:all .2s;outline:none}
-.form-field:focus{border-color:var(--royal-light);background:white;box-shadow:0 0 0 3px rgba(124,58,173,.1)}
+.form-card{background:white;border-radius:24px;padding:40px;box-shadow:0 10px 60px rgba(59,7,100,.08);border:2px solid rgba(212,160,23,.3)}
+.form-section-label{font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:var(--royal);text-transform:uppercase;letter-spacing:2px;margin:28px 0 16px;padding-bottom:10px;border-bottom:2px solid rgba(212,160,23,.25)}.form-section-label:first-child{margin-top:0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:4px}
+.form-field-wrap{display:flex;flex-direction:column;margin-bottom:14px}
+.form-field-wrap label{font-size:13px;font-weight:700;color:var(--body-text);margin-bottom:6px}
+.form-field{width:100%;padding:14px 16px;border:1.5px solid rgba(212,160,23,.4);border-radius:12px;font-family:'Nunito',sans-serif;font-size:15px;color:var(--body-text);background:var(--ivory-warm);transition:all .2s;outline:none}
+.form-field:focus{border-color:var(--gold);background:white;box-shadow:0 0 0 3px rgba(212,160,23,.15)}
+.form-field:hover{border-color:var(--gold)}
 .form-field.error{border-color:#e74c3c;background:#fdf0ef}
 .field-error{font-size:12px;color:#e74c3c;display:none;margin-top:4px}.field-error.show{display:block}
-select.form-field{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A6090' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+select.form-field{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23D4A017' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
 .candidate-field{display:none}.candidate-field.show{display:block}
-.btn-submit{width:100%;padding:18px;border:none;border-radius:14px;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;box-shadow:0 6px 25px rgba(212,160,23,.35);transition:all .3s;margin-top:24px;position:relative}
-.btn-submit:disabled{opacity:.7;cursor:not-allowed}
+.btn-submit{width:100%;padding:18px;border:none;border-radius:14px;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;box-shadow:0 6px 25px rgba(212,160,23,.35);transition:all .3s;margin-top:28px;position:relative}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(212,160,23,.45)}
+.btn-submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
 .btn-submit .spinner{display:none;width:20px;height:20px;border:2.5px solid rgba(59,7,100,.2);border-top-color:var(--royal);border-radius:50%;animation:spin .6s linear infinite;margin:0 auto}
 .btn-submit.loading .btn-text{visibility:hidden}.btn-submit.loading .spinner{display:block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
