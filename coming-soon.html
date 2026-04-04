@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Coming Soon — Begin Forever</title>
+<meta name="description" content="India's first 100% ID-verified Christian matrimony platform. Faith-first!"/>
+<link rel="icon" href="/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--royal:#3B0764;--royal-mid:#5B1A8A;--gold:#D4A017;--gold-bright:#F5C842;--ivory:#FDFAF4;--body-text:#2D1B4E;--muted:#7A6090}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;overflow:hidden;position:relative}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(212,160,23,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(212,160,23,.05) 1px,transparent 1px);background-size:60px 60px}
+.orb{position:fixed;border-radius:50%;filter:blur(100px);z-index:-1;pointer-events:none}
+.orb-1{width:500px;height:500px;background:var(--royal);opacity:.1;top:-150px;right:-100px}
+.orb-2{width:400px;height:400px;background:var(--gold);opacity:.08;bottom:-100px;left:-80px}
+.container{max-width:560px;animation:fadeIn .8s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.icon-row{font-size:32px;letter-spacing:16px;margin-bottom:24px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+h1{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,42px);color:var(--royal);margin-bottom:16px;line-height:1.3}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-bright));margin:0 auto 24px;border-radius:2px}
+.verse{font-family:'EB Garamond',serif;font-style:italic;font-size:18px;color:var(--muted);line-height:1.7;margin-bottom:32px;max-width:480px}
+.desc{font-size:16px;color:var(--body-text);line-height:1.8;margin-bottom:40px}
+.features{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.feature-pill{background:white;border:1px solid rgba(212,160,23,.2);border-radius:50px;padding:10px 20px;font-size:13px;font-weight:600;color:var(--royal);display:flex;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(59,7,100,.05)}
+.btn-home{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:15px;padding:16px 36px;border-radius:50px;text-decoration:none;box-shadow:0 6px 25px rgba(212,160,23,.35);transition:all .3s}
+.btn-home:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(212,160,23,.45)}
+.footer-text{margin-top:40px;font-size:12px;color:var(--muted)}
+.footer-text a{color:var(--gold);text-decoration:none}
+.sparkle{position:fixed;width:4px;height:4px;background:var(--gold);border-radius:50%;opacity:0;animation:sparkle 3s ease-in-out infinite}
+@keyframes sparkle{0%,100%{opacity:0;transform:scale(0)}50%{opacity:.6;transform:scale(1)}}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- Sparkles -->
+<div class="sparkle" style="top:15%;left:10%;animation-delay:0s;"></div>
+<div class="sparkle" style="top:25%;right:15%;animation-delay:0.8s;"></div>
+<div class="sparkle" style="bottom:20%;left:20%;animation-delay:1.5s;"></div>
+<div class="sparkle" style="top:40%;right:8%;animation-delay:2.2s;"></div>
+<div class="sparkle" style="bottom:30%;right:25%;animation-delay:0.5s;"></div>
+
+<div class="container">
+  <div class="icon-row">🕊️ ✝ 👑 ✝ 🕊️</div>
+  <h1>Something Beautiful<br/>Is Coming</h1>
+  <div class="divider"></div>
+  <p class="verse">
+    "For everything there is a season, and a time for every matter under heaven."<br/>
+    — Ecclesiastes 3:1
+  </p>
+  <p class="desc">
+    We're building a Christ-centered community where singles connect, grow, and find God's purpose together. Our community features are launching soon — be among the first to experience them.
+  </p>
+  <div class="features">
+    <div class="feature-pill">👥 Virtual Singles Meet</div>
+    <div class="feature-pill">🏙️ City Groups</div>
+    <div class="feature-pill">⛪ Church Partners</div>
+    <div class="feature-pill">💑 Couple Stories</div>
+    <div class="feature-pill">✍️ Faith Blog</div>
+  </div>
+  <a href="/" class="btn-home">✦ Join the Waitlist Now</a>
+  <p class="footer-text">
+    © 2026 <a href="/">Begin Forever</a> · A brand of Kyomi · Pune, India
+  </p>
+</div>
+</body>
+</html>
