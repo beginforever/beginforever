@@ -41,8 +41,6 @@ nav.scrolled{padding:10px 56px;box-shadow:0 4px 30px rgba(59,7,100,.08)}
 .launch-banner{text-align:center;padding:24px;background:linear-gradient(135deg,var(--gold-pale),var(--ivory));border:2px solid var(--gold);border-radius:16px;margin:0 auto 30px;max-width:600px}
 .launch-banner h3{font-family:'Cinzel',serif;color:var(--royal);font-size:22px}
 
-
-
 /* Success */
 .success-screen{display:none;text-align:center;padding:60px 24px;max-width:560px;margin:0 auto}.success-screen.show{display:block}
 .success-email-box{background:var(--royal-pale);border-radius:12px;padding:16px;margin:20px 0;border:1px solid rgba(59,7,100,.1)}
@@ -144,8 +142,6 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
   <p style="color:var(--muted);margin-top:4px;">We go live the moment we hit 300 verified members. Join the waitlist now — founding members get <strong>1 week free premium access</strong> and priority matching!</p>
   <a href="/pricing.html" style="display:inline-block;margin-top:12px;color:var(--royal);font-weight:700;font-size:13px;text-decoration:none;border-bottom:2px solid var(--gold);">View Pricing Plans →</a>
 </div>
-
-
 
 <div class="success-screen" id="successScreen">
   <div style="font-size:48px;margin-bottom:16px;">🕊️✨</div>
@@ -354,6 +350,9 @@ const SUPABASE_URL = "https://neftjxvovxocqabxjvme.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5lZnRqeHZvdnhvY3FhYnhqdm1lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3OTgyMjksImV4cCI6MjA5MDM3NDIyOX0.qWIVda-i5MsCy1OinW4JLLciI1B4ArBWviWIuGcOPBc";
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+const BREVO_API_KEY = "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";
+const BREVO_LIST_ID = 2; // "Your first list" in Brevo
+
 // ── NAV ──
 const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks');
 hamburger.addEventListener('click',()=>navLinks.classList.toggle('open'));
@@ -464,7 +463,154 @@ function showSuccess(name,email){
   document.getElementById('successScreen').scrollIntoView({behavior:'smooth',block:'center'});
 }
 
-// ── FORM SUBMIT — SAVES TO SUPABASE ──
+// ── BREVO: ADD CONTACT TO LIST ──
+async function addToBrevoList(data) {
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'api-key': BREVO_API_KEY,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: data.email,
+        attributes: {
+          FIRSTNAME: data.full_name.split(' ')[0],
+          LASTNAME: data.full_name.split(' ').slice(1).join(' ') || '',
+          SMS: data.phone || '',
+        },
+        listIds: [BREVO_LIST_ID],
+        updateEnabled: true,
+      }),
+    });
+  } catch(e) {
+    console.warn('Brevo contact add note:', e);
+  }
+}
+
+// ── BREVO: SEND CONFIRMATION EMAIL TO USER ──
+async function sendConfirmationEmail(data) {
+  const firstName = data.full_name.split(' ')[0];
+  try {
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'api-key': BREVO_API_KEY,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        sender: { name: 'Begin Forever', email: 'info@beginforever.in' },
+        to: [{ email: data.email, name: data.full_name }],
+        subject: `Welcome to Begin Forever, ${firstName}! 🕊️`,
+        htmlContent: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/></head>
+<body style="margin:0;padding:0;background:#FDFAF4;font-family:'Georgia',serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#FDFAF4;padding:40px 20px;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+<!-- Header -->
+<tr><td style="background:linear-gradient(135deg,#3B0764,#5B1A8A);border-radius:20px 20px 0 0;padding:40px 40px 32px;text-align:center;">
+  <p style="color:#F5C842;font-size:28px;letter-spacing:16px;margin:0 0 16px;">✦ ✝ 🕊️ ✝ ✦</p>
+  <h1 style="color:white;font-family:'Georgia',serif;font-size:28px;font-weight:700;margin:0 0 8px;">Begin Forever</h1>
+  <p style="color:rgba(255,255,255,0.75);font-style:italic;font-size:14px;margin:0;">Where God Writes Your Love Story</p>
+</td></tr>
+
+<!-- Body -->
+<tr><td style="background:white;padding:40px;">
+  <h2 style="color:#3B0764;font-size:24px;margin:0 0 16px;">You're on the Waitlist, ${firstName}! 🎉</h2>
+  <p style="color:#2D1B4E;font-size:15px;line-height:1.8;margin:0 0 20px;">Welcome to the Begin Forever family. We're so glad you're here — and we believe God has something beautiful in store for you.</p>
+
+  <!-- Details box -->
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#EDE4F5;border-radius:12px;padding:20px;margin-bottom:24px;">
+  <tr><td style="padding:4px 0;"><span style="color:#7A6090;font-size:13px;">Name</span><br/><strong style="color:#2D1B4E;">${data.full_name}</strong></td></tr>
+  <tr><td style="padding:4px 0;"><span style="color:#7A6090;font-size:13px;">Email</span><br/><strong style="color:#2D1B4E;">${data.email}</strong></td></tr>
+  <tr><td style="padding:4px 0;"><span style="color:#7A6090;font-size:13px;">Location</span><br/><strong style="color:#2D1B4E;">${data.city}, ${data.state}</strong></td></tr>
+  <tr><td style="padding:4px 0;"><span style="color:#7A6090;font-size:13px;">Denomination</span><br/><strong style="color:#2D1B4E;">${data.denomination}</strong></td></tr>
+  </table>
+
+  <!-- What's next -->
+  <div style="background:linear-gradient(135deg,#FDF3D0,#FDFAF4);border:2px solid #D4A017;border-radius:12px;padding:20px;margin-bottom:24px;">
+    <h3 style="color:#3B0764;font-size:16px;margin:0 0 12px;">🔔 What Happens Next?</h3>
+    <p style="color:#2D1B4E;font-size:14px;line-height:1.8;margin:0;">We're carefully building a community of genuine believers. Once we reach <strong>300 founding members</strong>, we'll personally reach out with everything you need to create your verified profile and begin your journey. As a founding member, you also get <strong>1 week of premium access — completely free</strong>.</p>
+  </div>
+
+  <!-- Verse -->
+  <div style="text-align:center;padding:24px 0;border-top:1px solid #F2EBD9;border-bottom:1px solid #F2EBD9;margin-bottom:24px;">
+    <p style="font-style:italic;color:#7A6090;font-size:16px;line-height:1.8;margin:0;">"For I know the plans I have for you, declares the Lord,<br/>plans to give you a hope and a future."</p>
+    <p style="color:#D4A017;font-size:13px;font-weight:700;margin:8px 0 0;">— Jeremiah 29:11</p>
+  </div>
+
+  <p style="color:#2D1B4E;font-size:14px;line-height:1.8;margin:0 0 24px;">Until we launch, know that God is already at work in your story. Something beautiful is on its way. 🙏</p>
+
+  <!-- CTA -->
+  <div style="text-align:center;margin-bottom:24px;">
+    <a href="https://beginforever.in" style="display:inline-block;background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-weight:700;font-size:15px;padding:14px 32px;border-radius:50px;text-decoration:none;">Visit Begin Forever →</a>
+  </div>
+
+  <p style="color:#7A6090;font-size:13px;line-height:1.7;margin:0;">With love & prayer,<br/><strong style="color:#3B0764;">The Begin Forever Team</strong><br/><a href="mailto:info@beginforever.in" style="color:#D4A017;">info@beginforever.in</a></p>
+</td></tr>
+
+<!-- Footer -->
+<tr><td style="background:#1A0A2E;border-radius:0 0 20px 20px;padding:20px 40px;text-align:center;">
+  <p style="color:rgba(255,255,255,0.5);font-size:12px;margin:0;">© 2026 Begin Forever · A brand of Kyomi · Pune, India</p>
+  <p style="color:rgba(255,255,255,0.5);font-size:12px;margin:6px 0 0;">You received this because you joined our waitlist at <a href="https://beginforever.in" style="color:#D4A017;">beginforever.in</a></p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`,
+      }),
+    });
+  } catch(e) {
+    console.warn('Confirmation email note:', e);
+  }
+}
+
+// ── BREVO: SEND ADMIN NOTIFICATION ──
+async function sendAdminNotification(data) {
+  try {
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'api-key': BREVO_API_KEY,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        sender: { name: 'Begin Forever Waitlist', email: 'info@beginforever.in' },
+        to: [{ email: 'info@beginforever.in', name: 'Begin Forever Admin' }],
+        subject: '🔔 New Waitlist Signup: ' + data.full_name,
+        htmlContent: `
+<div style="font-family:Arial,sans-serif;max-width:500px;">
+  <h2 style="color:#3B0764;">New Waitlist Entry!</h2>
+  <table style="border-collapse:collapse;width:100%;">
+    <tr style="background:#EDE4F5;"><td style="padding:10px;font-weight:bold;">Name</td><td style="padding:10px;">${data.full_name}</td></tr>
+    <tr><td style="padding:10px;font-weight:bold;">Age</td><td style="padding:10px;">${data.age}</td></tr>
+    <tr style="background:#EDE4F5;"><td style="padding:10px;font-weight:bold;">Gender</td><td style="padding:10px;">${data.gender}</td></tr>
+    <tr><td style="padding:10px;font-weight:bold;">Email</td><td style="padding:10px;">${data.email}</td></tr>
+    <tr style="background:#EDE4F5;"><td style="padding:10px;font-weight:bold;">Phone</td><td style="padding:10px;">${data.phone || 'Not provided'}</td></tr>
+    <tr><td style="padding:10px;font-weight:bold;">Denomination</td><td style="padding:10px;">${data.denomination}</td></tr>
+    <tr style="background:#EDE4F5;"><td style="padding:10px;font-weight:bold;">Location</td><td style="padding:10px;">${data.city}, ${data.state}</td></tr>
+    <tr><td style="padding:10px;font-weight:bold;">Registering For</td><td style="padding:10px;">${data.registering_for}</td></tr>
+    ${data.candidate_name ? `<tr style="background:#EDE4F5;"><td style="padding:10px;font-weight:bold;">Candidate</td><td style="padding:10px;">${data.candidate_name}</td></tr>` : ''}
+  </table>
+  <p style="margin-top:16px;color:#7A6090;font-size:13px;">View all entries in <a href="https://supabase.com/dashboard/project/neftjxvovxocqabxjvme/editor" style="color:#3B0764;">Supabase → waitlist table</a></p>
+</div>`,
+      }),
+    });
+  } catch(e) {
+    console.warn('Admin notification note:', e);
+  }
+}
+
+// ── FORM SUBMIT — SAVES TO SUPABASE + BREVO ──
 document.getElementById('waitlistForm').addEventListener('submit', async function(e){
   e.preventDefault();
   if(!validate()) return;
@@ -488,14 +634,28 @@ document.getElementById('waitlistForm').addEventListener('submit', async functio
   };
 
   try {
-    // Save to Supabase waitlist table
+    // 1. Save to Supabase
     const { error } = await sb.from('waitlist').insert(data);
     if (error) throw error;
-    
-    // Show success
+
+    // 2. Add to Brevo contacts list (runs in background, non-blocking)
+    addToBrevoList(data);
+
+    // 3. Send confirmation email to user (runs in background)
+    sendConfirmationEmail(data);
+
+    // 4. Send admin notification (runs in background)
+    sendAdminNotification(data);
+
+    // 5. Show success immediately after Supabase save
     showSuccess(data.full_name.split(' ')[0], data.email);
+
   } catch(err) {
     console.error('Submission error:', err);
+    // Still show success and run Brevo calls even if Supabase errors
+    addToBrevoList(data);
+    sendConfirmationEmail(data);
+    sendAdminNotification(data);
     showSuccess(data.full_name.split(' ')[0], data.email);
   }
 });
