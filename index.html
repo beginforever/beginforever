@@ -464,7 +464,7 @@ function showSuccess(name,email){
   document.getElementById('successScreen').scrollIntoView({behavior:'smooth',block:'center'});
 }
 
-// ── FORM SUBMIT — SAVES TO SUPABASE ──
+// ── FORM SUBMIT — SAVES TO SUPABASE + SENDS EMAIL VIA BREVO ──
 document.getElementById('waitlistForm').addEventListener('submit', async function(e){
   e.preventDefault();
   if(!validate()) return;
@@ -488,15 +488,106 @@ document.getElementById('waitlistForm').addEventListener('submit', async functio
   };
 
   try {
-    // Save to Supabase waitlist table
+    // 1. Save to Supabase waitlist table
     const { error } = await sb.from('waitlist').insert(data);
     if (error) throw error;
-    
-    // Show success
+
+    // 2. Send confirmation email via Brevo
+    try {
+      await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'api-key': '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',
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          sender: { name: 'Begin Forever', email: 'info@beginforever.in' },
+          to: [{ email: data.email, name: data.full_name }],
+          subject: 'Welcome to Begin Forever, ' + data.full_name.split(' ')[0] + '! 🕊️',
+          htmlContent: `
+            <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#FDFAF4;padding:40px 30px;border-radius:16px;">
+              <div style="text-align:center;margin-bottom:24px;">
+                <h1 style="font-family:Georgia,serif;color:#3B0764;font-size:28px;margin:0;">Begin Forever</h1>
+                <p style="color:#D4A017;font-style:italic;font-size:14px;margin-top:4px;">Where God Writes Your Love Story</p>
+              </div>
+              <h2 style="color:#3B0764;font-size:22px;">Welcome, ${data.full_name.split(' ')[0]}! 🙏</h2>
+              <p style="color:#2D1B4E;font-size:15px;line-height:1.8;">
+                Thank you for joining the Begin Forever family! You are now on our <strong>founding members waitlist</strong>.
+              </p>
+              <p style="color:#2D1B4E;font-size:15px;line-height:1.8;">
+                We're building India's first 100% ID-verified Christian matrimony platform — and you'll be among the very first to experience it.
+              </p>
+              <div style="background:linear-gradient(135deg,#FDF3D0,#fff);border:2px solid #D4A017;border-radius:12px;padding:20px;margin:24px 0;">
+                <p style="color:#3B0764;font-size:14px;line-height:1.7;margin:0;">
+                  <strong>🔔 What happens next?</strong><br/>
+                  • We're gathering our first 300 founding members<br/>
+                  • Once we reach our goal, we'll go live<br/>
+                  • You'll receive a personal invitation to create your profile<br/>
+                  • Founding members get <strong>1 week FREE</strong> premium access
+                </p>
+              </div>
+              <p style="color:#2D1B4E;font-size:15px;line-height:1.8;">
+                Until then, know that God is already at work in your story. Something beautiful is on its way.
+              </p>
+              <p style="font-style:italic;color:#7A6090;font-size:14px;line-height:1.7;margin-top:24px;padding-top:16px;border-top:1px solid #F2EBD9;">
+                "For I know the plans I have for you, declares the Lord, plans to give you a hope and a future." — Jeremiah 29:11
+              </p>
+              <div style="text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid #F2EBD9;">
+                <p style="color:#7A6090;font-size:12px;margin:0;">
+                  Begin Forever · A brand of Kyomi · Pune, India<br/>
+                  <a href="https://beginforever.in" style="color:#D4A017;">beginforever.in</a> · 
+                  <a href="mailto:info@beginforever.in" style="color:#D4A017;">info@beginforever.in</a> · 
+                  +91 97000 25345
+                </p>
+              </div>
+            </div>
+          `,
+        }),
+      });
+    } catch(emailErr) {
+      console.warn('Email send note:', emailErr);
+      // Don't block success if email fails
+    }
+
+    // 3. Send notification to admin
+    try {
+      await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'api-key': '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',
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          sender: { name: 'Begin Forever Waitlist', email: 'info@beginforever.in' },
+          to: [{ email: 'info@beginforever.in', name: 'Begin Forever Admin' }],
+          subject: '🔔 New Waitlist Signup: ' + data.full_name,
+          htmlContent: `
+            <h2>New Waitlist Entry!</h2>
+            <table style="border-collapse:collapse;font-family:Arial,sans-serif;">
+              <tr><td style="padding:8px;font-weight:bold;">Name:</td><td style="padding:8px;">${data.full_name}</td></tr>
+              <tr><td style="padding:8px;font-weight:bold;">Age:</td><td style="padding:8px;">${data.age}</td></tr>
+              <tr><td style="padding:8px;font-weight:bold;">Email:</td><td style="padding:8px;">${data.email}</td></tr>
+              <tr><td style="padding:8px;font-weight:bold;">Phone:</td><td style="padding:8px;">${data.phone || 'Not provided'}</td></tr>
+              <tr><td style="padding:8px;font-weight:bold;">Gender:</td><td style="padding:8px;">${data.gender}</td></tr>
+              <tr><td style="padding:8px;font-weight:bold;">Denomination:</td><td style="padding:8px;">${data.denomination}</td></tr>
+              <tr><td style="padding:8px;font-weight:bold;">State:</td><td style="padding:8px;">${data.state}</td></tr>
+              <tr><td style="padding:8px;font-weight:bold;">City:</td><td style="padding:8px;">${data.city}</td></tr>
+              <tr><td style="padding:8px;font-weight:bold;">Registering for:</td><td style="padding:8px;">${data.registering_for}</td></tr>
+              ${data.candidate_name ? '<tr><td style="padding:8px;font-weight:bold;">Candidate:</td><td style="padding:8px;">' + data.candidate_name + '</td></tr>' : ''}
+            </table>
+          `,
+        }),
+      });
+    } catch(adminErr) {
+      console.warn('Admin notification note:', adminErr);
+    }
+
+    // 4. Show success
     showSuccess(data.full_name.split(' ')[0], data.email);
   } catch(err) {
     console.error('Submission error:', err);
-    // Still show success to user (data might have saved despite error)
     showSuccess(data.full_name.split(' ')[0], data.email);
   }
 });
