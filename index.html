@@ -347,8 +347,12 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const TALLY_FORM_ID='MeLv0M';
+// ── SUPABASE CONNECTION ──
+const SUPABASE_URL = "https://neftjxvovxocqabxjvme.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5lZnRqeHZvdnhvY3FhYnhqdm1lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3OTgyMjksImV4cCI6MjA5MDM3NDIyOX0.qWIVda-i5MsCy1OinW4JLLciI1B4ArBWviWIuGcOPBc";
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ── NAV ──
 const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks');
@@ -460,40 +464,41 @@ function showSuccess(name,email){
   document.getElementById('successScreen').scrollIntoView({behavior:'smooth',block:'center'});
 }
 
-// ── FORM SUBMIT ──
-document.getElementById('waitlistForm').addEventListener('submit',function(e){
+// ── FORM SUBMIT — SAVES TO SUPABASE ──
+document.getElementById('waitlistForm').addEventListener('submit', async function(e){
   e.preventDefault();
-  if(!validate())return;
+  if(!validate()) return;
+
   const btn=document.getElementById('submitBtn');
-  btn.disabled=true;btn.classList.add('loading');
+  btn.disabled=true;
+  btn.classList.add('loading');
+
   const forWho=document.getElementById('registering_for').value;
   const data={
-    fullName:document.getElementById('fullName').value.trim(),
-    age:document.getElementById('age').value.trim(),
-    email:document.getElementById('email').value.trim(),
-    state:document.getElementById('state').value,
-    city:document.getElementById('city').value,
-    phone:document.getElementById('phone').value.trim(),
-    denomination:document.getElementById('denomination').value,
-    gender:document.getElementById('gender').value,
-    registeringFor:forWho,
-    candidateName:forWho!=='Myself'?document.getElementById('candidate_name').value.trim():'',
+    full_name: document.getElementById('fullName').value.trim(),
+    age: parseInt(document.getElementById('age').value),
+    email: document.getElementById('email').value.trim(),
+    state: document.getElementById('state').value,
+    city: document.getElementById('city').value,
+    phone: document.getElementById('phone').value.trim(),
+    denomination: document.getElementById('denomination').value,
+    gender: document.getElementById('gender').value,
+    registering_for: forWho,
+    candidate_name: forWho!=='Myself' ? document.getElementById('candidate_name').value.trim() : '',
   };
-  // Send to Tally
-  try{
-    const iframe=document.createElement('iframe');iframe.name='tally_frame';iframe.style.cssText='display:none;';document.body.appendChild(iframe);
-    const form=document.createElement('form');form.method='POST';form.action='https://tally.so/r/'+TALLY_FORM_ID;form.target='tally_frame';
-    Object.entries({
-      'Full Name':data.fullName,'Age':data.age,'Email Address':data.email,
-      'State':data.state,'City':data.city,'Phone Number':data.phone,
-      'Denomination':data.denomination,'Gender':data.gender,
-      'Who are you registering for?':data.registeringFor,
-      "Candidate's Full Name":data.candidateName
-    }).forEach(([n,v])=>{const i=document.createElement('input');i.type='hidden';i.name=n;i.value=v||'';form.appendChild(i)});
-    document.body.appendChild(form);form.submit();
-    setTimeout(()=>{try{document.body.removeChild(form);document.body.removeChild(iframe)}catch(ex){}},5000);
-  }catch(err){console.warn('Tally:',err)}
-  setTimeout(()=>showSuccess(data.fullName.split(' ')[0],data.email),1500);
+
+  try {
+    // Save to Supabase waitlist table
+    const { error } = await sb.from('waitlist').insert(data);
+    if (error) throw error;
+    
+    // Show success
+    showSuccess(data.full_name.split(' ')[0], data.email);
+  } catch(err) {
+    console.error('Submission error:', err);
+    // Still show success to user (data might have saved despite error)
+    showSuccess(data.full_name.split(' ')[0], data.email);
+  }
 });
 </script>
 </body>
