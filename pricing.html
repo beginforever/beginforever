@@ -131,7 +131,7 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
         <li><span class="check">✓</span> See who viewed your profile</li>
         <li><span class="check">✓</span> Virtual Coffee Dates</li>
       </ul>
-      <a href="/#form-anchor" class="btn-plan btn-outline">Get Started</a>
+      <button class="btn-plan btn-outline" onclick="payWithRazorpay('Monthly', 49900)">Subscribe — ₹499</button>
     </div>
 
     <!-- Quarterly — POPULAR -->
@@ -153,14 +153,14 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
         <li><span class="check">✓</span> See who viewed your profile</li>
         <li><span class="check">✓</span> Virtual Coffee Dates</li>
       </ul>
-      <a href="/#form-anchor" class="btn-plan btn-gold-plan">Get Started ✦</a>
+      <button class="btn-plan btn-gold-plan" onclick="payWithRazorpay('Quarterly', 129900)">Subscribe — ₹1,299 ✦</button>
     </div>
 
     <!-- Yearly -->
     <div class="price-card">
       <div class="plan-icon">✝</div>
       <h3>Yearly</h3>
-      <p class="plan-desc">Best value — save 50%</p>
+      <p class="plan-desc">Best value — save 57%</p>
       <div class="price">₹2,599<span>/year</span></div>
       <p class="per-month">₹217/month · Save ₹3,389</p>
       <span class="savings">Save 57%</span>
@@ -175,7 +175,7 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
         <li><span class="check">✓</span> See who viewed your profile</li>
         <li><span class="check">✓</span> Virtual Coffee Dates</li>
       </ul>
-      <a href="/#form-anchor" class="btn-plan btn-outline">Get Started</a>
+      <button class="btn-plan btn-outline" onclick="payWithRazorpay('Yearly', 259900)">Subscribe — ₹2,599</button>
     </div>
 
   </div>
@@ -288,6 +288,76 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
   <p>© 2026 Begin Forever · A brand of Kyomi · Pune, India · <a href="/">beginforever.in</a></p>
   <p style="margin-top:6px;"><a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · <a href="/safety.html">Safety Guidelines</a></p>
 </div>
+
+<!-- Razorpay Checkout -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- Payment Success Modal -->
+<div id="paymentSuccess" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:white; border-radius:24px; padding:40px; max-width:480px; text-align:center; margin:20px; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <div style="font-size:48px; margin-bottom:16px;">🎉🙏</div>
+    <h2 style="font-family:'Cinzel',serif; color:#3B0764; font-size:24px; margin-bottom:12px;">Payment Successful!</h2>
+    <p style="color:#2D1B4E; font-size:15px; line-height:1.7; margin-bottom:20px;">Thank you for subscribing to Begin Forever! Your <strong id="planNameSuccess"></strong> plan is now active.</p>
+    <div style="background:#FDF3D0; border:2px solid #D4A017; border-radius:12px; padding:16px; margin-bottom:20px;">
+      <p style="color:#3B0764; font-size:14px; margin:0; line-height:1.6;"><strong>🔔 Next step:</strong> Go to <a href="https://beginforever.app" style="color:#D4A017; font-weight:700;">beginforever.app</a> to create your profile and start finding your God-ordained match!</p>
+    </div>
+    <p style="font-style:italic; color:#7A6090; font-size:13px;">"Delight yourself in the Lord, and He will give you the desires of your heart." — Psalm 37:4</p>
+    <a href="https://beginforever.app" style="display:inline-block; margin-top:16px; background:linear-gradient(135deg,#D4A017,#F5C842); color:#3B0764; padding:14px 32px; border-radius:50px; font-weight:800; font-size:15px; text-decoration:none;">Create Your Profile →</a>
+  </div>
+</div>
+
+<script>
+function payWithRazorpay(planName, amountPaise) {
+  const options = {
+    key: 'rzp_live_SausbldU6Vqpy0',
+    amount: amountPaise,
+    currency: 'INR',
+    name: 'Begin Forever',
+    description: planName + ' Subscription — Begin Forever',
+    image: '/logo.png',
+    handler: function(response) {
+      // Payment successful
+      document.getElementById('planNameSuccess').textContent = planName;
+      const modal = document.getElementById('paymentSuccess');
+      modal.style.display = 'flex';
+      
+      // Log payment (you can see this in browser console)
+      console.log('Payment ID:', response.razorpay_payment_id);
+      console.log('Plan:', planName);
+      console.log('Amount:', amountPaise / 100);
+    },
+    prefill: {
+      name: '',
+      email: '',
+      contact: '',
+    },
+    notes: {
+      plan: planName,
+      platform: 'Begin Forever',
+    },
+    theme: {
+      color: '#3B0764',
+    },
+    modal: {
+      ondismiss: function() {
+        console.log('Payment cancelled');
+      }
+    }
+  };
+  
+  const rzp = new Razorpay(options);
+  rzp.on('payment.failed', function(response) {
+    alert('Payment failed. Please try again or contact info@beginforever.in for help.');
+    console.error('Payment failed:', response.error);
+  });
+  rzp.open();
+}
+
+// Close success modal when clicking outside
+document.getElementById('paymentSuccess').addEventListener('click', function(e) {
+  if (e.target === this) this.style.display = 'none';
+});
+</script>
 
 </body>
 </html>
