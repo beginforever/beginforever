@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1618369042614620');
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1618369042614620&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Begin Forever — Where Your Love Story Begins</title>
@@ -294,7 +312,7 @@ document.getElementById('state').addEventListener('change',function(){const c=do
 function validate(){let valid=true;const forWho=document.getElementById('registering_for').value;const rules=[{id:'fullName',errId:'err-fullName',test:v=>v.trim().length>=2},{id:'age',errId:'err-age',test:v=>{const n=parseInt(v);return n>=18&&n<=70}},{id:'gender',errId:'err-gender',test:v=>v!==''},{id:'religion',errId:'err-religion',test:v=>v!==''},{id:'email',errId:'err-email',test:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},{id:'state',errId:'err-state',test:v=>v!==''},{id:'city',errId:'err-city',test:v=>v!==''},{id:'registering_for',errId:'err-registering_for',test:v=>v!==''},];if(forWho&&forWho!=='Myself')rules.push({id:'candidate_name',errId:'err-candidate_name',test:v=>v.trim().length>=2});rules.forEach(r=>{const f=document.getElementById(r.id),e=document.getElementById(r.errId);if(!e)return;const ok=r.test(f.value);f.classList.toggle('error',!ok);e.classList.toggle('show',!ok);if(!ok)valid=false;});return valid;}
 document.querySelectorAll('.form-field').forEach(f=>{['input','change'].forEach(evt=>f.addEventListener(evt,()=>{f.classList.remove('error');const e=document.getElementById('err-'+f.id);if(e)e.classList.remove('show');}));});
 function launchConfetti(){const colors=['#FF2D78','#FF6B4A','#F5A623','#FFD700','#D4A017','#7C3AAD','#fff'];const c=document.getElementById('confettiContainer');for(let i=0;i<100;i++){const p=document.createElement('div');p.className='confetti-piece';p.style.cssText=`left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};width:${4+Math.random()*8}px;height:${4+Math.random()*8}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.5+Math.random()*2.5}s;animation-delay:${Math.random()*.8}s;`;c.appendChild(p);}setTimeout(()=>c.innerHTML='',5000);}
-function showSuccess(name,email){document.getElementById('waitlistForm').style.display='none';document.getElementById('successName').textContent=name;document.getElementById('successEmail').textContent=email;document.getElementById('successScreen').classList.add('show');launchConfetti();document.getElementById('successScreen').scrollIntoView({behavior:'smooth',block:'center'});}
+function showSuccess(name,email){document.getElementById('waitlistForm').style.display='none';document.getElementById('successName').textContent=name;document.getElementById('successEmail').textContent=email;document.getElementById('successScreen').classList.add('show');launchConfetti();fbq('track','Lead');document.getElementById('successScreen').scrollIntoView({behavior:'smooth',block:'center'});}
 document.getElementById('waitlistForm').addEventListener('submit',async function(e){e.preventDefault();if(!validate())return;const btn=document.getElementById('submitBtn');btn.disabled=true;btn.classList.add('loading');const forWho=document.getElementById('registering_for').value;const data={full_name:document.getElementById('fullName').value.trim(),age:parseInt(document.getElementById('age').value),email:document.getElementById('email').value.trim(),state:document.getElementById('state').value,city:document.getElementById('city').value,phone:document.getElementById('phone').value.trim(),religion:document.getElementById('religion').value,denomination:document.getElementById('denomination')?document.getElementById('denomination').value:'',gender:document.getElementById('gender').value,registering_for:forWho,candidate_name:forWho!=='Myself'?document.getElementById('candidate_name').value.trim():'',};try{const{error}=await sb.from('waitlist').insert(data);if(error)throw error;fetch('https://neftjxvovxocqabxjvme.supabase.co/functions/v1/smart-function',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),}).catch(e=>console.warn('Email note:',e));showSuccess(data.full_name.split(' ')[0],data.email);}catch(err){fetch('https://neftjxvovxocqabxjvme.supabase.co/functions/v1/smart-function',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),}).catch(e=>console.warn('Email note:',e));showSuccess(data.full_name.split(' ')[0],data.email);}});
 </script>
 </body>
