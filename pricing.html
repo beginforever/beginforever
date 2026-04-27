@@ -44,8 +44,7 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
 .price-card .features li{padding:8px 0;font-size:13px;color:var(--body-text);border-bottom:1px solid var(--ivory-deep);display:flex;align-items:center;gap:8px}
 .price-card .features li:last-child{border-bottom:none}
 .price-card .features li .check{color:var(--green);font-weight:700;font-size:16px}
-.price-card .features li .cross{color:#ccc;font-size:16px}
-.price-card .btn-plan{display:block;text-align:center;padding:16px;border-radius:14px;font-weight:800;font-size:15px;text-decoration:none;transition:all .3s;border:none;cursor:pointer;width:100%}
+.price-card .btn-plan{display:block;text-align:center;padding:16px;border-radius:14px;font-weight:800;font-size:15px;text-decoration:none;transition:all .3s;border:none;cursor:pointer;width:100%;font-family:'Nunito',sans-serif}
 .btn-gold-plan{background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);box-shadow:0 4px 20px rgba(212,160,23,.3)}
 .btn-gold-plan:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(212,160,23,.4)}
 .btn-outline{background:transparent;color:var(--royal);border:2px solid var(--royal)}
@@ -65,8 +64,8 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
 /* FAQ */
 .faq-section{max-width:700px;margin:0 auto;padding:0 24px 80px}
 .faq-section h2{font-family:'Cinzel',serif;font-size:24px;color:var(--royal);text-align:center;margin-bottom:8px}
-.faq-section .faq-sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:32px}
-.faq-item{background:white;border-radius:16px;margin-bottom:12px;border:1px solid var(--ivory-deep);overflow:hidden;transition:all .2s}
+.faq-section .faq-sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:28px}
+.faq-item{background:white;border-radius:16px;margin-bottom:10px;border:1px solid var(--ivory-deep);overflow:hidden;transition:all .2s}
 .faq-item:hover{border-color:rgba(212,160,23,.3)}
 .faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:700;font-size:15px;color:var(--royal);gap:12px}
 .faq-q .arrow{font-size:18px;color:var(--gold);transition:transform .3s;flex-shrink:0}
@@ -75,14 +74,13 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
 .faq-item.open .faq-a{display:block}
 
 /* CTA */
-.cta-section{text-align:center;padding:60px 24px;background:linear-gradient(135deg,var(--royal),var(--charcoal));color:white}
-.cta-section h2{font-family:'Cinzel',serif;color:white;font-size:28px;margin-bottom:12px}
-.cta-section p{color:rgba(255,255,255,.7);max-width:500px;margin:0 auto 24px;font-size:15px}
+.cta-section{text-align:center;padding:70px 24px;background:linear-gradient(135deg,var(--royal),var(--charcoal));color:white}
+.cta-section h2{font-family:'Cinzel',serif;color:white;font-size:clamp(24px,4vw,36px);margin-bottom:12px}
+.cta-section p{color:rgba(255,255,255,.7);max-width:460px;margin:0 auto 28px;font-size:15px;line-height:1.7}
 .cta-section .verse{font-family:'EB Garamond',serif;font-style:italic;color:var(--gold);font-size:14px;margin-top:24px}
 .btn-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:16px;padding:16px 36px;border-radius:50px;text-decoration:none;box-shadow:0 6px 25px rgba(212,160,23,.35);transition:all .3s}
-.btn-cta:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(212,160,23,.45)}
+.btn-cta:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,160,23,.5)}
 
-/* Footer */
 .footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid rgba(212,160,23,.15)}
 .footer a{color:var(--gold);text-decoration:none}
 
@@ -90,6 +88,7 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
   .pricing-grid{grid-template-columns:1fr}
   .comparison-table{font-size:12px}
   .comparison-table th,.comparison-table td{padding:10px 8px}
+  .comparison-table th:first-child,.comparison-table td:first-child{padding-left:12px}
 }
 </style>
 </head>
@@ -123,7 +122,7 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
       <ul class="features">
         <li><span class="check">✓</span> Create verified profile</li>
         <li><span class="check">✓</span> Browse all approved profiles</li>
-        <li><span class="check">✓</span> Filter by denomination & city</li>
+        <li><span class="check">✓</span> Filter by faith, denomination & city</li>
         <li><span class="check">✓</span> Unlimited interests</li>
         <li><span class="check">✓</span> In-app messaging</li>
         <li><span class="check">✓</span> Photo privacy controls</li>
@@ -145,7 +144,7 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
       <ul class="features">
         <li><span class="check">✓</span> Create verified profile</li>
         <li><span class="check">✓</span> Browse all approved profiles</li>
-        <li><span class="check">✓</span> Filter by denomination & city</li>
+        <li><span class="check">✓</span> Filter by faith, denomination & city</li>
         <li><span class="check">✓</span> Unlimited interests</li>
         <li><span class="check">✓</span> In-app messaging</li>
         <li><span class="check">✓</span> Photo privacy controls</li>
@@ -156,18 +155,18 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
       <button class="btn-plan btn-gold-plan" onclick="payWithRazorpay('Quarterly', 129900)">Subscribe — ₹1,299 ✦</button>
     </div>
 
-    <!-- Yearly -->
+    <!-- 6 Months (was Yearly) -->
     <div class="price-card">
       <div class="plan-icon">✝</div>
-      <h3>Yearly</h3>
-      <p class="plan-desc">Best value — save 57%</p>
-      <div class="price">₹2,599<span>/year</span></div>
-      <p class="per-month">₹217/month · Save ₹3,389</p>
-      <span class="savings">Save 57%</span>
+      <h3>6 Months</h3>
+      <p class="plan-desc">Best value — commit & save big</p>
+      <div class="price">₹2,599<span>/6 months</span></div>
+      <p class="per-month">₹433/month · Save ₹1,395</p>
+      <span class="savings">Save 46%</span>
       <ul class="features">
         <li><span class="check">✓</span> Create verified profile</li>
         <li><span class="check">✓</span> Browse all approved profiles</li>
-        <li><span class="check">✓</span> Filter by denomination & city</li>
+        <li><span class="check">✓</span> Filter by faith, denomination & city</li>
         <li><span class="check">✓</span> Unlimited interests</li>
         <li><span class="check">✓</span> In-app messaging</li>
         <li><span class="check">✓</span> Photo privacy controls</li>
@@ -175,7 +174,7 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
         <li><span class="check">✓</span> See who viewed your profile</li>
         <li><span class="check">✓</span> Virtual Coffee Dates</li>
       </ul>
-      <button class="btn-plan btn-outline" onclick="payWithRazorpay('Yearly', 259900)">Subscribe — ₹2,599</button>
+      <button class="btn-plan btn-outline" onclick="payWithRazorpay('6 Months', 259900)">Subscribe — ₹2,599</button>
     </div>
 
   </div>
@@ -190,13 +189,13 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
         <th>Feature</th>
         <th>Monthly<br/>₹499</th>
         <th>Quarterly<br/>₹1,299</th>
-        <th>Yearly<br/>₹2,599</th>
+        <th>6 Months<br/>₹2,599</th>
       </tr>
     </thead>
     <tbody>
       <tr><td>100% ID-Verified Profile</td><td>✅</td><td>✅</td><td>✅</td></tr>
       <tr><td>Browse All Approved Profiles</td><td>✅</td><td>✅</td><td>✅</td></tr>
-      <tr><td>Denomination & City Filters</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>Faith, Denomination & City Filters</td><td>✅</td><td>✅</td><td>✅</td></tr>
       <tr><td>Unlimited Interests</td><td>✅</td><td>✅</td><td>✅</td></tr>
       <tr><td>In-App Messaging</td><td>✅</td><td>✅</td><td>✅</td></tr>
       <tr><td>Photo Privacy Controls</td><td>✅</td><td>✅</td><td>✅</td></tr>
@@ -220,7 +219,7 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
       <span class="arrow">▼</span>
     </div>
     <div class="faq-a">
-      Begin Forever is India's first <strong>100% ID-verified matrimony platform for all faiths</strong>. Every member must submit a valid government ID (Aadhaar, PAN, Voter ID, Passport, or Driving Licence) and have their profile manually approved by our team before it goes live. This means zero fake profiles, zero bots, and zero spam. We're built exclusively for the Indian community across all faiths across all denominations — Catholic, Protestant, Pentecostal, Orthodox, CSI/CNI, Mar Thoma, and more. Our faith-first matching considers your religion, denomination, and personal values — not just appearance.
+      Begin Forever is India's first <strong>100% ID-verified matrimony platform open to all faiths</strong>. Every member must submit a valid government ID (Aadhaar, PAN, Voter ID, Passport, or Driving Licence) and have their profile manually approved by our team before it goes live. This means zero fake profiles, zero bots, and zero spam. Whether you're Hindu, Muslim, Christian, Sikh, Jain, Buddhist or any other faith — Begin Forever is built for you. Our faith-first matching considers your religion, denomination, and personal values, not just appearance.
     </div>
   </div>
 
@@ -230,7 +229,7 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
       <span class="arrow">▼</span>
     </div>
     <div class="faq-a">
-      After signing up, you'll create your profile and upload a government-issued photo ID (Aadhaar Card, PAN Card, Voter ID, Driving Licence, or Passport). Our admin team manually verifies every profile within 24-48 hours. We check that your name, photo, and details match your ID. Once approved, your profile becomes visible to other verified members. Your ID document is stored securely and is never shared with other members — it's only used for verification purposes.
+      After signing up, you'll create your profile and upload a government-issued photo ID (Aadhaar Card, PAN Card, Voter ID, Driving Licence, or Passport). Our admin team manually verifies every profile within 24–48 hours. We check that your name, photo, and details match your ID. Once approved, your profile becomes visible to other verified members. Your ID document is stored securely and is never shared with other members — it's only used for verification purposes.
     </div>
   </div>
 
@@ -240,7 +239,7 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
       <span class="arrow">▼</span>
     </div>
     <div class="faq-a">
-      Absolutely. Your privacy is our highest priority. All data is encrypted using industry-standard SSL/TLS encryption. Your phone number and email are never shown to other members — all communication happens through our secure in-app messaging. Your photos have privacy controls — you can choose to keep them private and share only on request. Your government ID is stored securely and used only for verification. We never sell or share your data with third parties. Read our full <a href="/privacy.html" style="color:var(--gold);">Privacy Policy</a> for details.
+      Absolutely. Your privacy is our highest priority. All data is encrypted using industry-standard SSL/TLS encryption. Your phone number and email are never shown to other members — all communication happens through our secure in-app messaging. Your photos have privacy controls — you can choose to keep them private and share only on request. Your government ID is stored securely and used only for verification. We never sell or share your data with third parties. Read our full <a href="/privacy.html">Privacy Policy</a> for details.
     </div>
   </div>
 
@@ -250,17 +249,27 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
       <span class="arrow">▼</span>
     </div>
     <div class="faq-a">
-      Yes! We understand that in the Indian community across all faiths, finding a life partner is often a family journey. You can register on behalf of your son, daughter, brother, sister, or other relative. The registration form lets you specify who you're registering for. Family members can help manage the profile, review matches, and be part of the conversation — because we believe marriage is a covenant that involves families, not just individuals.
+      Yes! We understand that in the Indian community, finding a life partner is often a family journey. You can register on behalf of your son, daughter, brother, sister, or other relative. The registration form lets you specify who you're registering for. Family members can help manage the profile, review matches, and be part of the conversation — because we believe marriage is a commitment that involves families, not just individuals.
     </div>
   </div>
 
   <div class="faq-item">
     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-      <span>What denominations are supported?</span>
+      <span>What faiths and denominations are supported?</span>
       <span class="arrow">▼</span>
     </div>
     <div class="faq-a">
-      Begin Forever welcomes people of <strong>all faiths</strong> across India — Christian, Hindu, Muslim, Sikh, Jain, Buddhist, and more. Within each religion, you can filter by denomination or community. Our goal is to help you find a life partner who shares your values and faith.
+      Begin Forever welcomes members from <strong>all faiths</strong> — Hindu, Muslim, Christian, Sikh, Jain, Buddhist and others. For Christian members, we support all denominations including Catholic, Protestant, Pentecostal, Baptist, CSI/CNI, Methodist, Seventh-day Adventist, Orthodox, Mar Thoma, Brethren, Lutheran, Presbyterian, Anglican, Non-Denominational, and more. You can filter matches by faith and denomination, and set your preference for same-faith or inter-faith matches. Our goal is to unite hearts across all communities.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+      <span>What does the 6-Month plan offer vs Quarterly?</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-a">
+      The 6-Month plan (₹2,599) gives you 6 months of full access at a single price — saving you ₹1,395 compared to paying monthly for the same period. All features are identical across every plan. It's the best choice for members who want extended access without multiple renewals and at the lowest per-month cost.
     </div>
   </div>
 
@@ -273,12 +282,13 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
       Yes, you can cancel your subscription at any time. There are no lock-in contracts or cancellation fees. If you cancel, you'll continue to have access to your plan's features until the end of your current billing period. After that, your profile will remain on the platform but with limited free-tier access. You can reactivate your subscription anytime. If you wish to delete your account entirely, you can do so from your profile settings, and all your data will be removed within 30 days.
     </div>
   </div>
+
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2>Ready to Begin Your<br/>Forever Story?</h2>
-  <p>Join hundreds of Indians across all faiths who are finding their life partner. Your soulmate could be one click away.</p>
+  <h2>Ready to Begin Your Forever Story?</h2>
+  <p>Join hundreds of Indians across all faiths who are finding their life partner on a platform they can trust.</p>
   <a href="/#form-anchor" class="btn-cta">✦ Join the Waitlist — It's Free</a>
   <p class="verse">"Delight yourself in the Lord, and he will give you the desires of your heart."<br/>— Psalm 37:4</p>
 </section>
@@ -293,16 +303,16 @@ body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-te
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <!-- Payment Success Modal -->
-<div id="paymentSuccess" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center;">
-  <div style="background:white; border-radius:24px; padding:40px; max-width:480px; text-align:center; margin:20px; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-    <div style="font-size:48px; margin-bottom:16px;">🎉🙏</div>
-    <h2 style="font-family:'Cinzel',serif; color:#3B0764; font-size:24px; margin-bottom:12px;">Payment Successful!</h2>
-    <p style="color:#2D1B4E; font-size:15px; line-height:1.7; margin-bottom:20px;">Thank you for subscribing to Begin Forever! Your <strong id="planNameSuccess"></strong> plan is now active.</p>
-    <div style="background:#FDF3D0; border:2px solid #D4A017; border-radius:12px; padding:16px; margin-bottom:20px;">
-      <p style="color:#3B0764; font-size:14px; margin:0; line-height:1.6;"><strong>🔔 Next step:</strong> Go to <a href="https://beginforever.app" style="color:#D4A017; font-weight:700;">beginforever.app</a> to create your profile and start finding your God-ordained match!</p>
+<div id="paymentSuccess" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:24px;padding:40px;max-width:480px;text-align:center;margin:20px;box-shadow:0 20px 60px rgba(0,0,0,.3);">
+    <div style="font-size:48px;margin-bottom:16px;">🎉🙏</div>
+    <h2 style="font-family:'Cinzel',serif;color:#3B0764;font-size:24px;margin-bottom:12px;">Payment Successful!</h2>
+    <p style="color:#2D1B4E;font-size:15px;line-height:1.7;margin-bottom:20px;">Thank you for subscribing to Begin Forever! Your <strong id="planNameSuccess"></strong> plan is now active.</p>
+    <div style="background:#FDF3D0;border:2px solid #D4A017;border-radius:12px;padding:16px;margin-bottom:20px;">
+      <p style="color:#3B0764;font-size:14px;margin:0;line-height:1.6;"><strong>🔔 Next step:</strong> Go to <a href="https://beginforever.app" style="color:#D4A017;font-weight:700;">beginforever.app</a> to create your profile and start finding your perfect match!</p>
     </div>
-    <p style="font-style:italic; color:#7A6090; font-size:13px;">"Delight yourself in the Lord, and He will give you the desires of your heart." — Psalm 37:4</p>
-    <a href="https://beginforever.app" style="display:inline-block; margin-top:16px; background:linear-gradient(135deg,#D4A017,#F5C842); color:#3B0764; padding:14px 32px; border-radius:50px; font-weight:800; font-size:15px; text-decoration:none;">Create Your Profile →</a>
+    <p style="font-style:italic;color:#7A6090;font-size:13px;">"Delight yourself in the Lord, and He will give you the desires of your heart." — Psalm 37:4</p>
+    <a href="https://beginforever.app" style="display:inline-block;margin-top:16px;background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;padding:14px 32px;border-radius:50px;font-weight:800;font-size:15px;text-decoration:none;">Create Your Profile →</a>
   </div>
 </div>
 
@@ -316,48 +326,25 @@ function payWithRazorpay(planName, amountPaise) {
     description: planName + ' Subscription — Begin Forever',
     image: '/logo.png',
     handler: function(response) {
-      // Payment successful
       document.getElementById('planNameSuccess').textContent = planName;
       const modal = document.getElementById('paymentSuccess');
       modal.style.display = 'flex';
-      
-      // Log payment (you can see this in browser console)
       console.log('Payment ID:', response.razorpay_payment_id);
-      console.log('Plan:', planName);
-      console.log('Amount:', amountPaise / 100);
     },
-    prefill: {
-      name: '',
-      email: '',
-      contact: '',
-    },
-    notes: {
-      plan: planName,
-      platform: 'Begin Forever',
-    },
-    theme: {
-      color: '#3B0764',
-    },
-    modal: {
-      ondismiss: function() {
-        console.log('Payment cancelled');
-      }
-    }
+    prefill: { name: '', email: '', contact: '' },
+    notes: { plan: planName, platform: 'Begin Forever' },
+    theme: { color: '#3B0764' },
+    modal: { ondismiss: function() { console.log('Payment cancelled'); } }
   };
-  
   const rzp = new Razorpay(options);
   rzp.on('payment.failed', function(response) {
     alert('Payment failed. Please try again or contact info@beginforever.in for help.');
-    console.error('Payment failed:', response.error);
   });
   rzp.open();
 }
-
-// Close success modal when clicking outside
 document.getElementById('paymentSuccess').addEventListener('click', function(e) {
   if (e.target === this) this.style.display = 'none';
 });
 </script>
-
 </body>
 </html>
