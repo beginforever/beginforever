@@ -21,7 +21,7 @@ src="https://www.facebook.com/tr?id=1618369042614620&ev=PageView&noscript=1"/>
 <!-- End Meta Pixel -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Begin Forever — Where Your Love Story Begins</title>
+<title>Begin Forever — Every Love Story Deserves a Forever</title>
 <meta name="description" content="India's first 100% ID-verified matrimony platform. Faith-first matchmaking for Christians, Hindus, Muslims, Sikhs and all faiths."/>
 <meta name="keywords" content="Christian matrimony, Indian matrimony, faith-based matchmaking, Begin Forever, True Love, Find Love, Find your soulmate, your Truematch, Hindu matrimony, Muslim matrimony"/>
 <link rel="icon" href="/favicon.ico"/>
@@ -88,8 +88,10 @@ select.form-field{cursor:pointer;appearance:none;background-image:url("data:imag
 .step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-family:'Cinzel',serif;font-weight:900;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 4px 15px rgba(212,160,23,.3)}
 .step-card h3{font-family:'Cinzel',serif;font-size:18px;color:var(--royal);margin-bottom:8px}.step-card p{font-size:14px;line-height:1.7;color:var(--muted)}
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.feature-card{background:white;border-radius:20px;padding:32px;border:1px solid var(--ivory-deep);box-shadow:0 4px 20px rgba(59,7,100,.05);transition:all .3s}
+.feature-card{background:white;border-radius:20px;padding:32px;border:1px solid var(--ivory-deep);box-shadow:0 4px 20px rgba(59,7,100,.05);transition:all .3s;position:relative;overflow:hidden}
+.feature-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--royal),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .feature-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(59,7,100,.1)}
+.feature-card:hover::after{transform:scaleX(1)}
 .feature-card h3{font-family:'Cinzel',serif;font-size:18px;color:var(--royal);margin-bottom:8px}.feature-card p{font-size:14px;line-height:1.7;color:var(--muted)}
 .download-section{text-align:center;padding:80px 24px;background:linear-gradient(135deg,var(--royal),var(--charcoal));color:white}
 .download-section h2{color:white}.download-section p{color:rgba(255,255,255,.7);max-width:500px;margin:0 auto 32px}
@@ -102,9 +104,61 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
 .footer-col a{display:block;color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;padding:4px 0}
 .footer-bottom{max-width:1100px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:12px}
 .footer-bottom a{color:var(--gold);text-decoration:none}
+
+/* ── GALLERY STRIP ── */
+.gallery-strip{overflow:hidden;background:var(--ivory-deep);padding:48px 0}
+.gallery-strip-title{font-family:'Cinzel',serif;font-size:clamp(18px,3vw,26px);color:var(--royal);text-align:center;margin-bottom:28px;padding:0 24px}
+.gallery-track{display:flex;gap:16px;animation:galleryScroll 28s linear infinite;width:max-content}
+.gallery-track:hover{animation-play-state:paused}
+.gallery-item{width:240px;height:160px;border-radius:16px;flex-shrink:0;position:relative;overflow:hidden;border:2px solid rgba(212,160,23,.2)}
+.gallery-item-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:44px}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(59,7,100,.85));padding:16px 14px 12px;color:white}
+.gallery-caption h4{font-family:'Cinzel',serif;font-size:12px;font-weight:700;margin-bottom:2px}
+.gallery-caption p{font-size:10px;color:rgba(255,255,255,.65)}
+@keyframes galleryScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── POPUP / MODAL ── */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:8000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
+.popup-overlay.active{opacity:1;pointer-events:all}
+.popup-box{background:linear-gradient(160deg,var(--royal),#280840);border:2px solid rgba(212,160,23,.4);border-radius:28px;padding:36px;max-width:420px;width:100%;position:relative;transform:scale(.88) translateY(24px);transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;opacity:0;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.popup-overlay.active .popup-box{transform:scale(1) translateY(0);opacity:1}
+.popup-close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:all .2s}
+.popup-close:hover{background:rgba(255,255,255,.2);color:white}
+.popup-emoji{font-size:44px;display:block;text-align:center;margin-bottom:14px}
+.popup-box h2{font-family:'Cinzel',serif;color:white;font-size:21px;text-align:center;margin-bottom:10px}
+.popup-box p{color:rgba(255,255,255,.7);font-size:14px;text-align:center;line-height:1.7;margin-bottom:14px}
+.popup-hl{background:rgba(212,160,23,.12);border:1px solid rgba(212,160,23,.35);border-radius:12px;padding:13px 16px;margin-bottom:14px;text-align:center}
+.popup-hl strong{color:var(--gold-bright);font-size:14px;display:block;margin-bottom:3px}
+.popup-hl span{color:rgba(255,255,255,.6);font-size:12px}
+.popup-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:15px;border:none;border-radius:50px;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .3s;margin-bottom:8px}
+.popup-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,160,23,.4)}
+.popup-skip{background:none;border:none;color:rgba(255,255,255,.4);font-size:13px;cursor:pointer;width:100%;padding:6px;font-family:'Nunito',sans-serif}
+.popup-skip:hover{color:rgba(255,255,255,.7)}
+
+/* ── FLOATING BANNER ── */
+.float-banner{position:fixed;bottom:24px;right:24px;z-index:7000;max-width:300px;background:white;border:2px solid rgba(212,160,23,.4);border-radius:18px;padding:16px 18px;box-shadow:0 16px 50px rgba(59,7,100,.18);transform:translateY(120px);opacity:0;transition:all .5s cubic-bezier(.34,1.56,.64,1)}
+.float-banner.show{transform:translateY(0);opacity:1}
+.float-close{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;padding:3px}
+.float-close:hover{color:var(--royal)}
+.float-banner .flabel{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-deep);font-weight:700;margin-bottom:4px}
+.float-banner h4{font-family:'Cinzel',serif;color:var(--royal);font-size:13px;margin-bottom:3px}
+.float-banner p{color:var(--muted);font-size:12px;line-height:1.5;margin-bottom:10px}
+.float-btn{display:block;width:100%;text-align:center;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:13px;padding:9px;border-radius:50px;text-decoration:none}
+.float-btn:hover{opacity:.9}
+.float-spots{display:flex;align-items:center;gap:5px;margin-top:7px;justify-content:center}
+.sdots{display:flex;gap:3px}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:.25}
+.sdot.on{opacity:1;background:#27ae60}
+.float-spots span{font-size:11px;color:var(--muted)}
+
 @media(max-width:768px){
   nav{padding:12px 20px}.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(253,250,244,.98);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:998}.nav-links.open{display:flex}.hamburger{display:flex}
   .hero{padding:140px 20px 60px}.form-row{grid-template-columns:1fr}.form-card{padding:24px}.footer-grid{grid-template-columns:1fr}.steps-grid,.features-grid{grid-template-columns:1fr}
+  .float-banner{left:16px;right:16px;max-width:100%}
 }
 @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .hero h1{animation:fadeInUp .8s ease}.hero-badge{animation:fadeInUp .6s ease}.hero-desc{animation:fadeInUp 1s ease}.hero-cta{animation:fadeInUp 1.2s ease}
@@ -114,12 +168,16 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
 <body>
 <div class="bg-layer"><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div></div>
 <div class="confetti-container" id="confettiContainer"></div>
+
+<!-- TICKER -->
 <div class="ticker-wrap"><div class="ticker-track">
   <span>✦ Only 300 founding member spots — Begin Your Forever — Join Now · First week FREE for founding members ✦</span>
   <span>✦ Only 300 founding member spots — Begin Your Forever — Join Now · First week FREE for founding members ✦</span>
   <span>✦ Only 300 founding member spots — Begin Your Forever — Join Now · First week FREE for founding members ✦</span>
   <span>✦ Only 300 founding member spots — Begin Your Forever — Join Now · First week FREE for founding members ✦</span>
 </div></div>
+
+<!-- NAV -->
 <nav id="mainNav">
   <a href="/" class="nav-logo"><img src="/logo.png" alt="Begin Forever" style="width:48px;height:48px;border-radius:10px" onerror="this.style.display='none'"/><span style="font-size:18px;font-weight:700">Begin Forever</span></a>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -131,39 +189,44 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
     <a href="#form-anchor" class="nav-cta">Begin Your Forever — Join Now ✦</a>
   </div>
 </nav>
+
+<!-- HERO -->
 <section class="hero" style="position:relative;overflow:hidden;">
   <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=1400&q=80') center/cover;opacity:.08;"></div>
   <div style="position:relative;z-index:1;">
-  <div style="color:var(--gold);font-size:28px;margin-bottom:16px;letter-spacing:16px;">✦ 👑 🕊️ 🌟 👑 ✦</div>
-  <div class="hero-badge">India's First 100% ID-Verified Matrimony Platform</div>
-  <h1>Where God Writes<br/>Your Love Story</h1>
-  <div class="hero-divider"></div>
-  <p class="hero-verse">"For everything there is a season, and a time for every matter under heaven — a time to love."<br/>— Ecclesiastes 3:1,8</p>
-  <p class="hero-desc">India's first 100% ID-verified matrimony platform — open to all faiths, rooted in values, built on trust. Real people, real intentions, zero fake profiles.</p>
-  <a href="#form-anchor" class="hero-cta">✦ Begin Your Forever — Join Now ✦</a>
-  <p class="hero-cta-sub">First 300 members · 1 Week Premium Free</p>
-  <p style="font-size:12px;color:var(--muted);margin-top:8px;">🔒 No payment required · Takes 60 seconds</p>
+    <div style="color:var(--gold);font-size:28px;margin-bottom:16px;letter-spacing:16px;">✦ 👑 🕊️ 🌟 👑 ✦</div>
+    <div class="hero-badge">India's First 100% ID-Verified Matrimony Platform</div>
+    <h1>Every Love Story<br/>Deserves a Forever</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-verse">"There is a time for every purpose under heaven — a time to love."<br/>— Ecclesiastes 3:1,8</p>
+    <p class="hero-desc">India's first 100% ID-verified matrimony platform — open to all faiths, rooted in values, built on trust. Real people, real intentions, zero fake profiles.</p>
+    <a href="#form-anchor" class="hero-cta">✦ Begin Your Forever — Join Now ✦</a>
+    <p class="hero-cta-sub">First 300 members · 1 Week Premium Free</p>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">🔒 No payment required · Takes 60 seconds</p>
   </div>
 </section>
 
+<!-- LAUNCH BANNER -->
 <div style="max-width:640px;margin:0 auto;padding:0 24px 30px;">
-<div class="launch-banner">
-  <h3>🔥 Limited to 300 Founding Members</h3>
-  <p style="color:var(--muted);margin-top:4px;">We go live the moment we hit 300 verified members. Be among the first — founding members get <strong>1 week free premium access</strong> and priority matching.</p>
-  <a href="/pricing.html" style="display:inline-block;margin-top:12px;color:var(--royal);font-weight:700;font-size:13px;text-decoration:none;border-bottom:2px solid var(--gold);">View Pricing Plans →</a>
-</div>
+  <div class="launch-banner reveal">
+    <h3>🔥 Limited to 300 Founding Members</h3>
+    <p style="color:var(--muted);margin-top:4px;">We go live the moment we hit 300 verified members. Be among the first — founding members get <strong>1 week free premium access</strong> and priority matching.</p>
+    <a href="/pricing.html" style="display:inline-block;margin-top:12px;color:var(--royal);font-weight:700;font-size:13px;text-decoration:none;border-bottom:2px solid var(--gold);">View Pricing Plans →</a>
+  </div>
 </div>
 
+<!-- MEMBER CTA -->
 <div style="max-width:640px;margin:0 auto;padding:0 24px 30px;">
-<div style="background:linear-gradient(135deg,var(--royal),#280840);border-radius:20px;padding:32px;text-align:center;box-shadow:0 8px 30px rgba(59,7,100,.3);">
-  <div style="font-size:32px;margin-bottom:12px;">✦</div>
-  <h3 style="font-family:'Cinzel',serif;color:white;font-size:22px;margin-bottom:8px;">Be a Founding Member</h3>
-  <p style="color:rgba(255,255,255,.7);font-size:14px;margin-bottom:20px;">The app launches when we hit 300 verified members. Join the waitlist now and be first in line.</p>
-  <a href="#form-anchor" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:15px;padding:14px 32px;border-radius:50px;text-decoration:none;box-shadow:0 4px 15px rgba(212,160,23,.4);">✦ Join the Waitlist — It's Free</a>
-  <p style="color:rgba(255,255,255,.5);font-size:12px;margin-top:12px;">100% ID verified · Free to join · All faiths welcome</p>
-</div>
+  <div class="reveal" style="background:linear-gradient(135deg,var(--royal),#280840);border-radius:20px;padding:32px;text-align:center;box-shadow:0 8px 30px rgba(59,7,100,.3);">
+    <div style="font-size:32px;margin-bottom:12px;">✦</div>
+    <h3 style="font-family:'Cinzel',serif;color:white;font-size:22px;margin-bottom:8px;">Be a Founding Member</h3>
+    <p style="color:rgba(255,255,255,.7);font-size:14px;margin-bottom:20px;">The app launches when we hit 300 verified members. Join the waitlist now and be first in line.</p>
+    <a href="#form-anchor" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:15px;padding:14px 32px;border-radius:50px;text-decoration:none;box-shadow:0 4px 15px rgba(212,160,23,.4);">✦ Join the Waitlist — It's Free</a>
+    <p style="color:rgba(255,255,255,.5);font-size:12px;margin-top:12px;">100% ID verified · Free to join · All faiths welcome</p>
+  </div>
 </div>
 
+<!-- SUCCESS SCREEN -->
 <div class="success-screen" id="successScreen">
   <div style="font-size:48px;margin-bottom:16px;">🌟✨</div>
   <h2 style="font-family:'Cinzel',serif;color:var(--royal);font-size:28px;margin-bottom:12px;">Your Forever Begins, <span id="successName">Friend</span>!</h2>
@@ -179,6 +242,29 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
   <p style="font-family:'EB Garamond',serif;font-style:italic;color:var(--muted);margin-top:24px;font-size:16px;line-height:1.7;">"Two are better than one, because they have a good reward for their toil."<br/>— Ecclesiastes 4:9</p>
 </div>
 
+<!-- GALLERY STRIP -->
+<div class="gallery-strip">
+  <p class="gallery-strip-title reveal">Every Faith. Every Heart. One Platform.</p>
+  <div style="overflow:hidden">
+    <div class="gallery-track">
+      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal),#280840)"><div class="gallery-item-bg">🙏</div><div class="gallery-caption"><h4>Faith-First Matching</h4><p>Rooted in shared values</p></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#280840,var(--royal-mid))"><div class="gallery-item-bg">🪪</div><div class="gallery-caption"><h4>ID Verified</h4><p>Zero fake profiles</p></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal-mid),var(--gold-deep))"><div class="gallery-item-bg">💍</div><div class="gallery-caption"><h4>Real Intentions</h4><p>Genuine matrimony only</p></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,var(--charcoal),var(--royal))"><div class="gallery-item-bg">☕</div><div class="gallery-caption"><h4>Virtual Coffee Dates</h4><p>Safe first connections</p></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal),var(--royal-light))"><div class="gallery-item-bg">🌍</div><div class="gallery-caption"><h4>All Faiths Welcome</h4><p>Hindu · Muslim · Christian · Sikh</p></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#280840,var(--royal-mid))"><div class="gallery-item-bg">🌟</div><div class="gallery-caption"><h4>300 Founding Members</h4><p>Be part of the beginning</p></div></div>
+      <!-- duplicate for seamless loop -->
+      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal),#280840)"><div class="gallery-item-bg">🙏</div><div class="gallery-caption"><h4>Faith-First Matching</h4><p>Rooted in shared values</p></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#280840,var(--royal-mid))"><div class="gallery-item-bg">🪪</div><div class="gallery-caption"><h4>ID Verified</h4><p>Zero fake profiles</p></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal-mid),var(--gold-deep))"><div class="gallery-item-bg">💍</div><div class="gallery-caption"><h4>Real Intentions</h4><p>Genuine matrimony only</p></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,var(--charcoal),var(--royal))"><div class="gallery-item-bg">☕</div><div class="gallery-caption"><h4>Virtual Coffee Dates</h4><p>Safe first connections</p></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal),var(--royal-light))"><div class="gallery-item-bg">🌍</div><div class="gallery-caption"><h4>All Faiths Welcome</h4><p>Hindu · Muslim · Christian · Sikh</p></div></div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#280840,var(--royal-mid))"><div class="gallery-item-bg">🌟</div><div class="gallery-caption"><h4>300 Founding Members</h4><p>Be part of the beginning</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WAITLIST FORM -->
 <section class="form-section" id="form-anchor">
   <h2>✦ Begin Your Forever — Join Now</h2>
   <p style="text-align:center;color:var(--muted);margin-bottom:40px;">We launch when we hit <strong>300 members</strong>. Founding members get 1 week premium access free. <strong>Claim your spot now.</strong></p>
@@ -221,49 +307,54 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
   </div>
 </section>
 
+<!-- HOW IT WORKS -->
 <section class="section" id="how">
   <p style="text-align:center;font-family:'Cinzel',serif;font-size:11px;color:var(--gold-deep);text-transform:uppercase;letter-spacing:3px;margin-bottom:8px;">How It Works</p>
   <h2>Simple. Safe. Sincere.</h2>
   <div class="steps-grid">
-    <div class="step-card"><div class="step-num">1</div><h3>Create Profile</h3><p>Share your faith, values, and what you're looking for in a life partner.</p></div>
-    <div class="step-card"><div class="step-num">2</div><h3>Get ID Verified</h3><p>Upload your government ID — every single profile on Begin Forever is 100% verified.</p></div>
-    <div class="step-card"><div class="step-num">3</div><h3>Discover Matches</h3><p>Browse verified profiles filtered by faith, denomination, age, and city.</p></div>
-    <div class="step-card"><div class="step-num">4</div><h3>Connect &amp; Meet</h3><p>Express interest, chat privately, and meet through our safe in-app environment.</p></div>
+    <div class="step-card reveal"><div class="step-num">1</div><h3>Create Profile</h3><p>Share your faith, values, and what you're looking for in a life partner.</p></div>
+    <div class="step-card reveal"><div class="step-num">2</div><h3>Get ID Verified</h3><p>Upload your government ID — every single profile on Begin Forever is 100% verified.</p></div>
+    <div class="step-card reveal"><div class="step-num">3</div><h3>Discover Matches</h3><p>Browse verified profiles filtered by faith, denomination, age, and city.</p></div>
+    <div class="step-card reveal"><div class="step-num">4</div><h3>Connect &amp; Meet</h3><p>Express interest, chat privately, and meet through our safe in-app environment.</p></div>
   </div>
 </section>
 
+<!-- FEATURES -->
 <section class="section" id="features">
   <p style="text-align:center;font-family:'Cinzel',serif;font-size:11px;color:var(--gold-deep);text-transform:uppercase;letter-spacing:3px;margin-bottom:8px;">Platform Features</p>
   <h2>Built on Trust. Built for You.</h2>
   <div class="features-grid">
-    <div class="feature-card"><div style="font-size:32px;margin-bottom:16px;">🪪</div><h3>100% ID-Verified</h3><p>Every profile verified with a government-issued ID. No fake accounts, no catfishing — guaranteed.</p></div>
-    <div class="feature-card"><div style="font-size:32px;margin-bottom:16px;">🙏</div><h3>Your Faith, Your Choice</h3><p>Whether you're Christian, Hindu, Muslim, Sikh, Jain, Buddhist or other — Begin Forever is built for you.</p></div>
-    <div class="feature-card"><div style="font-size:32px;margin-bottom:16px;">⚙️</div><h3>Full Faith Control</h3><p>You decide who appears in your feed and who can send you interest requests. Complete control over your faith-based matching preferences.</p></div>
-    <div class="feature-card"><div style="font-size:32px;margin-bottom:16px;">📍</div><h3>Location Matching</h3><p>Find someone in your city, state, or anywhere across India with smart real-time filters.</p></div>
-    <div class="feature-card"><div style="font-size:32px;margin-bottom:16px;">☕</div><h3>Virtual Coffee Dates</h3><p>A safe, private space to connect and get to know each other before sharing personal details.</p></div>
-    <div class="feature-card"><div style="font-size:32px;margin-bottom:16px;">🛡️</div><h3>Family-Safe Platform</h3><p>Designed to be transparent, dignified, and safe — for you and for family members involved in your search.</p></div>
+    <div class="feature-card reveal"><div style="font-size:32px;margin-bottom:16px;">🪪</div><h3>100% ID-Verified</h3><p>Every profile verified with a government-issued ID. No fake accounts, no catfishing — guaranteed.</p></div>
+    <div class="feature-card reveal"><div style="font-size:32px;margin-bottom:16px;">🙏</div><h3>Your Faith, Your Choice</h3><p>Whether you're Christian, Hindu, Muslim, Sikh, Jain, Buddhist or other — Begin Forever is built for you.</p></div>
+    <div class="feature-card reveal"><div style="font-size:32px;margin-bottom:16px;">⚙️</div><h3>Full Faith Control</h3><p>You decide who appears in your feed and who can send you interest requests. Complete control over your faith-based matching preferences.</p></div>
+    <div class="feature-card reveal"><div style="font-size:32px;margin-bottom:16px;">📍</div><h3>Location Matching</h3><p>Find someone in your city, state, or anywhere across India with smart real-time filters.</p></div>
+    <div class="feature-card reveal"><div style="font-size:32px;margin-bottom:16px;">☕</div><h3>Virtual Coffee Dates</h3><p>A safe, private space to connect and get to know each other before sharing personal details.</p></div>
+    <div class="feature-card reveal"><div style="font-size:32px;margin-bottom:16px;">🛡️</div><h3>Family-Safe Platform</h3><p>Designed to be transparent, dignified, and safe — for you and for family members involved in your search.</p></div>
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
 <section class="section" style="background:linear-gradient(180deg,#FDFAF4,#F5ECD4,#FDFAF4);padding:60px 24px;">
   <h2 style="font-family:'Cinzel',serif;font-size:28px;color:var(--royal);margin-bottom:12px;text-align:center">What Our Members Say</h2>
   <p style="text-align:center;color:var(--muted);margin-bottom:40px;font-size:15px">Real stories from real people</p>
   <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
-    <div style="background:#FFFFFF;border-radius:20px;padding:28px;box-shadow:0 4px 24px rgba(59,7,100,.06);border:1px solid rgba(212,160,23,.15);text-align:center;"><div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3B0764,#D4A017);margin:0 auto 12px;border:3px solid var(--gold);"></div><p style="font-size:14px;color:var(--royal);line-height:1.7;font-style:italic;margin-bottom:12px;">"Finally a platform where I feel truly safe. The ID verification gives me so much confidence."</p><p style="font-family:'Cinzel',serif;font-size:13px;color:var(--royal);font-weight:700;">Priya M.</p><p style="font-size:11px;color:var(--gold);">⭐⭐⭐⭐⭐ · Mumbai</p></div>
-    <div style="background:#FFFFFF;border-radius:20px;padding:28px;box-shadow:0 4px 24px rgba(59,7,100,.06);border:1px solid rgba(212,160,23,.15);text-align:center;"><div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3B0764,#D4A017);margin:0 auto 12px;border:3px solid var(--gold);"></div><p style="font-size:14px;color:var(--royal);line-height:1.7;font-style:italic;margin-bottom:12px;">"The best matrimony platform in India. Genuine profiles, zero fake accounts!"</p><p style="font-family:'Cinzel',serif;font-size:13px;color:var(--royal);font-weight:700;">Rohit S.</p><p style="font-size:11px;color:var(--gold);">⭐⭐⭐⭐⭐ · Bengaluru</p></div>
-    <div style="background:#FFFFFF;border-radius:20px;padding:28px;box-shadow:0 4px 24px rgba(59,7,100,.06);border:1px solid rgba(212,160,23,.15);text-align:center;"><div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3B0764,#D4A017);margin:0 auto 12px;border:3px solid var(--gold);"></div><p style="font-size:14px;color:var(--royal);line-height:1.7;font-style:italic;margin-bottom:12px;">"My family loves this platform. Very values-centered and respectful of all faiths."</p><p style="font-family:'Cinzel',serif;font-size:13px;color:var(--royal);font-weight:700;">Sarah T.</p><p style="font-size:11px;color:var(--gold);">⭐⭐⭐⭐⭐ · Kochi</p></div>
+    <div class="reveal" style="background:#FFFFFF;border-radius:20px;padding:28px;box-shadow:0 4px 24px rgba(59,7,100,.06);border:1px solid rgba(212,160,23,.15);text-align:center;"><div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3B0764,#D4A017);margin:0 auto 12px;border:3px solid var(--gold);"></div><p style="font-size:14px;color:var(--royal);line-height:1.7;font-style:italic;margin-bottom:12px;">"Finally a platform where I feel truly safe. The ID verification gives me so much confidence."</p><p style="font-family:'Cinzel',serif;font-size:13px;color:var(--royal);font-weight:700;">Priya M.</p><p style="font-size:11px;color:var(--gold);">⭐⭐⭐⭐⭐ · Mumbai</p></div>
+    <div class="reveal" style="background:#FFFFFF;border-radius:20px;padding:28px;box-shadow:0 4px 24px rgba(59,7,100,.06);border:1px solid rgba(212,160,23,.15);text-align:center;"><div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3B0764,#D4A017);margin:0 auto 12px;border:3px solid var(--gold);"></div><p style="font-size:14px;color:var(--royal);line-height:1.7;font-style:italic;margin-bottom:12px;">"The best matrimony platform in India. Genuine profiles, zero fake accounts!"</p><p style="font-family:'Cinzel',serif;font-size:13px;color:var(--royal);font-weight:700;">Rohit S.</p><p style="font-size:11px;color:var(--gold);">⭐⭐⭐⭐⭐ · Bengaluru</p></div>
+    <div class="reveal" style="background:#FFFFFF;border-radius:20px;padding:28px;box-shadow:0 4px 24px rgba(59,7,100,.06);border:1px solid rgba(212,160,23,.15);text-align:center;"><div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3B0764,#D4A017);margin:0 auto 12px;border:3px solid var(--gold);"></div><p style="font-size:14px;color:var(--royal);line-height:1.7;font-style:italic;margin-bottom:12px;">"My family loves this platform. Very values-centered and respectful of all faiths."</p><p style="font-family:'Cinzel',serif;font-size:13px;color:var(--royal);font-weight:700;">Sarah T.</p><p style="font-size:11px;color:var(--gold);">⭐⭐⭐⭐⭐ · Kochi</p></div>
   </div>
 </section>
 
+<!-- STATS -->
 <section style="background:linear-gradient(135deg,var(--royal),#280840);padding:60px 24px;text-align:center;">
   <div style="max-width:800px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
-    <div><p style="font-family:'Cinzel',serif;font-size:36px;color:var(--gold-bright);font-weight:900;">100%</p><p style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px;">ID Verified</p></div>
-    <div><p style="font-family:'Cinzel',serif;font-size:36px;color:var(--gold-bright);font-weight:900;">All</p><p style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px;">Faiths Welcome</p></div>
-    <div><p style="font-family:'Cinzel',serif;font-size:36px;color:var(--gold-bright);font-weight:900;">300</p><p style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px;">Founding Spots</p></div>
-    <div><p style="font-family:'Cinzel',serif;font-size:36px;color:var(--gold-bright);font-weight:900;">0</p><p style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px;">Fake Profiles</p></div>
+    <div class="reveal"><p style="font-family:'Cinzel',serif;font-size:36px;color:var(--gold-bright);font-weight:900;">100%</p><p style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px;">ID Verified</p></div>
+    <div class="reveal"><p style="font-family:'Cinzel',serif;font-size:36px;color:var(--gold-bright);font-weight:900;">All</p><p style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px;">Faiths Welcome</p></div>
+    <div class="reveal"><p style="font-family:'Cinzel',serif;font-size:36px;color:var(--gold-bright);font-weight:900;">300</p><p style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px;">Founding Spots</p></div>
+    <div class="reveal"><p style="font-family:'Cinzel',serif;font-size:36px;color:var(--gold-bright);font-weight:900;">0</p><p style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px;">Fake Profiles</p></div>
   </div>
 </section>
 
+<!-- CTA -->
 <section class="download-section">
   <p style="font-family:'Cinzel',serif;font-size:11px;text-transform:uppercase;letter-spacing:3px;margin-bottom:8px;">Your Story Starts Now</p>
   <h2>Your Forever Is Waiting</h2>
@@ -274,6 +365,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer id="contact">
   <div class="footer-grid">
     <div class="footer-brand">
@@ -296,24 +388,95 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
   </div>
 </footer>
 
+<!-- WELCOME POPUP -->
+<div class="popup-overlay" id="popWelcome">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('popWelcome')">✕</button>
+    <span class="popup-emoji">🎉</span>
+    <h2>Founding Member Offer</h2>
+    <p>India's first 100% ID-verified matrimony platform for all faiths is launching soon. Join our exclusive founding batch:</p>
+    <div class="popup-hl"><strong>✦ 1 Week Free Premium Access</strong><span>Available for first 300 members only</span></div>
+    <div class="popup-hl"><strong>🔐 Zero Fake Profiles — Guaranteed</strong><span>Every member government ID verified</span></div>
+    <button class="popup-btn" onclick="closeAndScroll('popWelcome')">✦ Claim My Founding Spot</button>
+    <button class="popup-skip" onclick="closePopup('popWelcome')">Maybe later</button>
+  </div>
+</div>
+
+<!-- EXIT POPUP -->
+<div class="popup-overlay" id="popExit">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('popExit')">✕</button>
+    <span class="popup-emoji">💫</span>
+    <h2>Wait — Your Match May Already Be Here</h2>
+    <p>Before you go — join free and be among the first 300 founding members of Begin Forever.</p>
+    <div class="popup-hl"><strong>🎁 First 300 Members Get 1 Week FREE</strong><span>No credit card required · Unsubscribe anytime</span></div>
+    <button class="popup-btn" onclick="closeAndScroll('popExit')">✦ Yes, I Want to Join!</button>
+    <button class="popup-skip" onclick="closePopup('popExit')">No thanks</button>
+  </div>
+</div>
+
+<!-- FLOATING BANNER -->
+<div class="float-banner" id="floatBanner">
+  <button class="float-close" onclick="dismissBanner()">✕</button>
+  <p class="flabel">🔥 Limited Offer</p>
+  <h4>Founding Member Spots</h4>
+  <p>First 300 members get 1 week free premium. No payment needed.</p>
+  <a href="#form-anchor" class="float-btn" onclick="dismissBanner()">✦ Grab My Free Spot</a>
+  <div class="float-spots"><div class="sdots" id="sdots"></div><span id="spotsText">Spots filling fast</span></div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL="https://neftjxvovxocqabxjvme.supabase.co";
 const SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5lZnRqeHZvdnhvY3FhYnhqdm1lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3OTgyMjksImV4cCI6MjA5MDM3NDIyOX0.qWIVda-i5MsCy1OinW4JLLciI1B4ArBWviWIuGcOPBc";
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+// NAV
 const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks');
 hamburger.addEventListener('click',()=>navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50));
+
+// DENOMINATION TOGGLE
 function toggleDenom(){var r=document.getElementById('religion').value;document.getElementById('denomWrap').classList.toggle('show',r==='Christian');}
+
+// CANDIDATE TOGGLE
 document.getElementById('registering_for').addEventListener('change',function(){document.getElementById('candidateWrap').classList.toggle('show',this.value&&this.value!=='Myself');});
+
+// CITY DATA
 const cityData={'Andhra Pradesh':['Visakhapatnam','Vijayawada','Guntur','Nellore','Tirupati','Rajahmundry','Kakinada','Other'],'Assam':['Guwahati','Silchar','Dibrugarh','Jorhat','Other'],'Bihar':['Patna','Gaya','Muzaffarpur','Bhagalpur','Other'],'Chhattisgarh':['Raipur','Bhilai','Bilaspur','Other'],'Delhi':['New Delhi','Central Delhi','South Delhi','North Delhi','East Delhi','West Delhi','Other'],'Goa':['Panaji','Margao','Vasco da Gama','Other'],'Gujarat':['Ahmedabad','Surat','Vadodara','Rajkot','Gandhinagar','Other'],'Haryana':['Gurugram','Faridabad','Ambala','Hisar','Other'],'Himachal Pradesh':['Shimla','Dharamshala','Manali','Other'],'Jharkhand':['Ranchi','Jamshedpur','Dhanbad','Other'],'Karnataka':['Bengaluru','Mysuru','Mangalore','Hubli','Other'],'Kerala':['Kochi','Thiruvananthapuram','Kozhikode','Thrissur','Kollam','Kottayam','Alappuzha','Other'],'Madhya Pradesh':['Bhopal','Indore','Jabalpur','Gwalior','Other'],'Maharashtra':['Mumbai','Pune','Nagpur','Nashik','Thane','Navi Mumbai','Other'],'Manipur':['Imphal','Other'],'Meghalaya':['Shillong','Tura','Other'],'Mizoram':['Aizawl','Other'],'Nagaland':['Kohima','Dimapur','Other'],'Odisha':['Bhubaneswar','Cuttack','Rourkela','Other'],'Punjab':['Ludhiana','Amritsar','Jalandhar','Patiala','Chandigarh','Other'],'Rajasthan':['Jaipur','Jodhpur','Udaipur','Kota','Other'],'Tamil Nadu':['Chennai','Coimbatore','Madurai','Tiruchirappalli','Salem','Other'],'Telangana':['Hyderabad','Warangal','Nizamabad','Other'],'Tripura':['Agartala','Other'],'Uttar Pradesh':['Lucknow','Kanpur','Agra','Varanasi','Noida','Ghaziabad','Other'],'Uttarakhand':['Dehradun','Haridwar','Rishikesh','Other'],'West Bengal':['Kolkata','Howrah','Durgapur','Siliguri','Other'],'Other / Outside India':['Other']};
 document.getElementById('state').addEventListener('change',function(){const c=document.getElementById('city');c.innerHTML='<option value="" disabled selected>Select city</option>';(cityData[this.value]||[]).forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;c.appendChild(o)});});
+
+// VALIDATION
 function validate(){let valid=true;const forWho=document.getElementById('registering_for').value;const rules=[{id:'fullName',errId:'err-fullName',test:v=>v.trim().length>=2},{id:'age',errId:'err-age',test:v=>{const n=parseInt(v);return n>=18&&n<=70}},{id:'gender',errId:'err-gender',test:v=>v!==''},{id:'religion',errId:'err-religion',test:v=>v!==''},{id:'email',errId:'err-email',test:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},{id:'state',errId:'err-state',test:v=>v!==''},{id:'city',errId:'err-city',test:v=>v!==''},{id:'registering_for',errId:'err-registering_for',test:v=>v!==''},];if(forWho&&forWho!=='Myself')rules.push({id:'candidate_name',errId:'err-candidate_name',test:v=>v.trim().length>=2});rules.forEach(r=>{const f=document.getElementById(r.id),e=document.getElementById(r.errId);if(!e)return;const ok=r.test(f.value);f.classList.toggle('error',!ok);e.classList.toggle('show',!ok);if(!ok)valid=false;});return valid;}
 document.querySelectorAll('.form-field').forEach(f=>{['input','change'].forEach(evt=>f.addEventListener(evt,()=>{f.classList.remove('error');const e=document.getElementById('err-'+f.id);if(e)e.classList.remove('show');}));});
+
+// CONFETTI
 function launchConfetti(){const colors=['#FF2D78','#FF6B4A','#F5A623','#FFD700','#D4A017','#7C3AAD','#fff'];const c=document.getElementById('confettiContainer');for(let i=0;i<100;i++){const p=document.createElement('div');p.className='confetti-piece';p.style.cssText=`left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};width:${4+Math.random()*8}px;height:${4+Math.random()*8}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.5+Math.random()*2.5}s;animation-delay:${Math.random()*.8}s;`;c.appendChild(p);}setTimeout(()=>c.innerHTML='',5000);}
+
 function showSuccess(name,email){document.getElementById('waitlistForm').style.display='none';document.getElementById('successName').textContent=name;document.getElementById('successEmail').textContent=email;document.getElementById('successScreen').classList.add('show');launchConfetti();fbq('track','Lead');document.getElementById('successScreen').scrollIntoView({behavior:'smooth',block:'center'});}
+
+// FORM SUBMIT
 document.getElementById('waitlistForm').addEventListener('submit',async function(e){e.preventDefault();if(!validate())return;const btn=document.getElementById('submitBtn');btn.disabled=true;btn.classList.add('loading');const forWho=document.getElementById('registering_for').value;const data={full_name:document.getElementById('fullName').value.trim(),age:parseInt(document.getElementById('age').value),email:document.getElementById('email').value.trim(),state:document.getElementById('state').value,city:document.getElementById('city').value,phone:document.getElementById('phone').value.trim(),religion:document.getElementById('religion').value,denomination:document.getElementById('denomination')?document.getElementById('denomination').value:'',gender:document.getElementById('gender').value,registering_for:forWho,candidate_name:forWho!=='Myself'?document.getElementById('candidate_name').value.trim():'',};try{const{error}=await sb.from('waitlist').insert(data);if(error)throw error;fetch('https://neftjxvovxocqabxjvme.supabase.co/functions/v1/smart-function',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),}).catch(e=>console.warn('Email note:',e));showSuccess(data.full_name.split(' ')[0],data.email);}catch(err){fetch('https://neftjxvovxocqabxjvme.supabase.co/functions/v1/smart-function',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),}).catch(e=>console.warn('Email note:',e));showSuccess(data.full_name.split(' ')[0],data.email);}});
+
+// POPUPS
+function closePopup(id){document.getElementById(id).classList.remove('active');}
+function closeAndScroll(id){closePopup(id);document.getElementById('form-anchor').scrollIntoView({behavior:'smooth'});}
+function dismissBanner(){document.getElementById('floatBanner').classList.remove('show');sessionStorage.setItem('bannerDismissed','1');}
+
+// Welcome popup after 3s (once per session)
+setTimeout(()=>{if(!sessionStorage.getItem('popupSeen')){document.getElementById('popWelcome').classList.add('active');sessionStorage.setItem('popupSeen','1');}},3000);
+
+// Exit intent
+let exitFired=false;
+document.addEventListener('mouseleave',e=>{if(e.clientY<=0&&!exitFired&&!sessionStorage.getItem('exitSeen')){exitFired=true;sessionStorage.setItem('exitSeen','1');document.getElementById('popExit').classList.add('active');}});
+
+// Floating banner after 8s
+setTimeout(()=>{if(!sessionStorage.getItem('bannerDismissed')){document.getElementById('floatBanner').classList.add('show');const d=document.getElementById('sdots');for(let i=0;i<10;i++){const dot=document.createElement('div');dot.className='sdot'+(i<7?' on':'');d.appendChild(dot);}document.getElementById('spotsText').textContent='~7 of 10 spots taken';}},8000);
+
+// Scroll reveal
+const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 </script>
 </body>
 </html>
