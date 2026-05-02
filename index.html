@@ -54,8 +54,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 nav{position:fixed;top:36px;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 56px;background:rgba(253,250,244,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,160,23,.15);transition:all .3s}
 nav.scrolled{padding:10px 56px;box-shadow:0 4px 30px rgba(59,7,100,.08)}
 .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.nav-logo img{width:40px;height:40px;border-radius:10px}
-.nav-logo span{font-family:'Cinzel',serif;font-weight:700;font-size:18px;color:var(--royal)}
+.nav-logo img{width:52px;height:52px;border-radius:12px}
+.nav-logo span{font-family:'Cinzel',serif;font-weight:700;font-size:20px;color:var(--royal)}
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{text-decoration:none;color:var(--body-text);font-weight:500;font-size:14px;transition:color .2s}
 .nav-links a:hover{color:var(--royal)}
@@ -145,8 +145,6 @@ select.form-field{cursor:pointer;appearance:none;background-image:url("data:imag
 .btn-submit.loading .btn-text{visibility:hidden}
 .btn-submit.loading .spinner{display:block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-.trust-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-top:32px}
-.trust-badge{text-align:center;padding:16px 12px;background:var(--ivory-warm);border-radius:12px;border:1px solid var(--ivory-deep)}
 
 /* ── MISC ── */
 .download-section{text-align:center;padding:80px 24px;background:linear-gradient(135deg,var(--royal),var(--charcoal));color:white}
@@ -164,75 +162,77 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
 .footer-bottom{max-width:1100px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:12px}
 .footer-bottom a{color:var(--gold);text-decoration:none}
 
+/* ── MILESTONE BANNER ANIMATIONS ── */
+@keyframes floatDot{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.1)}}
+@keyframes bounceIn{0%{transform:scale(.3);opacity:0}50%{transform:scale(1.1)}70%{transform:scale(.9)}100%{transform:scale(1);opacity:1}}
+
+/* ── WOMEN SAFETY SIDEBAR BANNER ── */
+}
+@media(max-width:600px){.couple-grid{grid-template-columns:1fr 1fr !important}}
+/* ── WOMEN SAFETY SIDEBAR ── */
+.women-sidebar{position:fixed;bottom:300px;left:24px;z-index:8400;max-width:310px;pointer-events:none;opacity:0;transform:translateX(-110%);transition:opacity .4s ease,transform .55s cubic-bezier(.34,1.3,.64,1)}
+.women-sidebar.wsin{opacity:1;pointer-events:all;transform:translateX(0)}
+.wsb-box{background:linear-gradient(145deg,#993556,#72243E);border:1.5px solid rgba(244,192,209,.4);border-radius:18px;padding:16px 18px;box-shadow:0 16px 50px rgba(153,53,86,.4);position:relative;overflow:hidden}
+.wsb-box::before{content:"";position:absolute;top:-30px;right:-30px;width:90px;height:90px;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);pointer-events:none}
+.wsb-close{position:absolute;top:10px;right:11px;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);width:22px;height:22px;border-radius:50%;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;font-family:"Nunito",sans-serif}
+.wsb-close:hover{background:rgba(255,255,255,.2);color:white}
+.wsb-tag{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:rgba(244,192,209,.9);font-weight:700;margin-bottom:5px}
+.wsb-title{font-family:"Cinzel",serif;font-size:13px;color:white;font-weight:700;line-height:1.35;margin-bottom:8px}
+.wsb-points{margin-bottom:12px}
+.wsb-point{display:flex;align-items:flex-start;gap:7px;margin-bottom:6px;font-size:11px;color:rgba(255,255,255,.85);line-height:1.4}
+.wsb-point span{color:#F4C0D1;font-size:14px;flex-shrink:0;margin-top:-1px}
+.wsb-btn{display:block;width:100%;padding:9px;background:white;color:#72243E;font-weight:800;font-size:12px;border:none;border-radius:50px;cursor:pointer;font-family:"Nunito",sans-serif;text-align:center;text-decoration:none}
+.wsb-btn:hover{background:#FBEAF0}
 /* ── REFERRAL BANNER ── */
 .rfbanner{position:fixed;bottom:24px;left:24px;z-index:8500;max-width:310px;pointer-events:none;opacity:0;transform:translateX(-110%);transition:opacity .4s ease,transform .55s cubic-bezier(.34,1.3,.64,1)}
 .rfbanner.rfin{opacity:1;pointer-events:all;transform:translateX(0)}
 .rfb-box{background:linear-gradient(145deg,#3B0764,#5B1A8A);border:1.5px solid rgba(212,160,23,.5);border-radius:20px;padding:18px 20px;box-shadow:0 20px 60px rgba(59,7,100,.4);position:relative;overflow:hidden}
-.rfb-box::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(212,160,23,.15),transparent 70%);pointer-events:none}
-.rfb-close{position:absolute;top:10px;right:12px;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:'Nunito',sans-serif}
+.rfb-close{position:absolute;top:10px;right:12px;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;font-family:"Nunito",sans-serif}
 .rfb-close:hover{background:rgba(255,255,255,.2);color:white}
 .rfb-eye{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:rgba(212,160,23,.9);font-weight:700;margin-bottom:5px}
-.rfb-title{font-family:'Cinzel',serif;font-size:14px;color:white;font-weight:700;line-height:1.35;margin-bottom:10px}
+.rfb-title{font-family:"Cinzel",serif;font-size:14px;color:white;font-weight:700;line-height:1.35;margin-bottom:10px}
 .rfb-title span{color:#F5C842}
 .rfb-tiers{display:flex;gap:7px;margin-bottom:10px}
 .rfb-tier{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(212,160,23,.25);border-radius:10px;padding:8px 5px;text-align:center}
-.rfb-tier .tn{font-family:'Cinzel',serif;font-size:20px;font-weight:900;color:#F5C842;line-height:1}
+.rfb-tier .tn{font-family:"Cinzel",serif;font-size:20px;font-weight:900;color:#F5C842;line-height:1}
 .rfb-tier .tl{font-size:9px;color:rgba(255,255,255,.55);margin:3px 0;line-height:1.3}
 .rfb-tier .tr{font-size:10px;font-weight:700;color:#4ade80}
 .rfb-dual{background:rgba(212,160,23,.12);border:1px solid rgba(212,160,23,.3);border-radius:8px;padding:7px 10px;font-size:11px;color:rgba(255,255,255,.85);margin-bottom:12px;line-height:1.4}
-.rfb-btn{display:block;width:100%;padding:10px;background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-weight:800;font-size:12px;border:none;border-radius:50px;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s;text-align:center}
-.rfb-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,160,23,.4)}
-
+.rfb-btn{display:block;width:100%;padding:10px;background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-weight:800;font-size:12px;border:none;border-radius:50px;cursor:pointer;font-family:"Nunito",sans-serif;text-align:center}
 /* ── REFERRAL MODAL ── */
 .rfmodal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:9500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(6px)}
 .rfmodal-overlay.rfmopen{opacity:1;pointer-events:all}
 .rfmodal{background:linear-gradient(160deg,#3B0764,#280840);border:2px solid rgba(212,160,23,.45);border-radius:28px;padding:32px 28px;max-width:440px;width:100%;position:relative;transform:scale(.88) translateY(20px);transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;opacity:0;box-shadow:0 40px 80px rgba(0,0,0,.6)}
 .rfmodal-overlay.rfmopen .rfmodal{transform:scale(1) translateY(0);opacity:1}
-.rfmodal-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:'Nunito',sans-serif}
+.rfmodal-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;font-family:"Nunito",sans-serif}
 .rfmodal-close:hover{background:rgba(255,255,255,.2);color:white}
-.rfmodal h2{font-family:'Cinzel',serif;color:white;font-size:20px;text-align:center;margin-bottom:5px}
+.rfmodal h2{font-family:"Cinzel",serif;color:white;font-size:20px;text-align:center;margin-bottom:5px}
 .rfm-sub{color:rgba(255,255,255,.65);font-size:13px;text-align:center;margin-bottom:18px;line-height:1.5}
 .rfm-tiers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .rfm-tier{background:rgba(255,255,255,.07);border:1px solid rgba(212,160,23,.25);border-radius:14px;padding:14px 10px;text-align:center}
-.rfm-tier .mtn{font-family:'Cinzel',serif;font-size:26px;font-weight:900;color:#F5C842;line-height:1}
+.rfm-tier .mtn{font-family:"Cinzel",serif;font-size:26px;font-weight:900;color:#F5C842;line-height:1}
 .rfm-tier .mtl{font-size:11px;color:rgba(255,255,255,.55);margin:4px 0;line-height:1.3}
-.rfm-tier .mtr{font-size:12px;font-weight:700;color:#4ade80;margin-top:2px}
+.rfm-tier .mtr{font-size:12px;font-weight:700;color:#4ade80}
 .rfm-dual{background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.3);border-radius:12px;padding:10px 14px;margin-bottom:18px;font-size:13px;color:rgba(255,255,255,.85);line-height:1.5}
 .rfm-linkbox{background:rgba(255,255,255,.06);border:1.5px solid rgba(212,160,23,.35);border-radius:14px;padding:14px 16px;margin-bottom:16px}
 .rfm-linkbox p{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(212,160,23,.8);font-weight:700;margin-bottom:8px}
 .rfm-link-row{display:flex;gap:8px;align-items:center}
-.rfm-link-input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(212,160,23,.2);border-radius:8px;padding:9px 12px;color:white;font-size:12px;font-family:'Nunito',sans-serif;outline:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.rfm-copy-btn{padding:9px 14px;background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-weight:800;font-size:12px;border:none;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;white-space:nowrap;transition:all .2s}
+.rfm-link-input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(212,160,23,.2);border-radius:8px;padding:9px 12px;color:white;font-size:12px;font-family:"Nunito",sans-serif;outline:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rfm-copy-btn{padding:9px 14px;background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-weight:800;font-size:12px;border:none;border-radius:8px;cursor:pointer;font-family:"Nunito",sans-serif;white-space:nowrap}
 .rfm-copy-btn.copied{background:#4ade80;color:#1A0A2E}
 .rfm-share-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:10px;text-align:center}
 .rfm-share-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
-.rfm-share-btn{padding:10px 6px;border:1px solid rgba(212,160,23,.25);border-radius:12px;background:rgba(255,255,255,.06);color:white;font-size:11px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
-.rfm-share-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(212,160,23,.5)}
+.rfm-share-btn{padding:10px 6px;border:1px solid rgba(212,160,23,.25);border-radius:12px;background:rgba(255,255,255,.06);color:white;font-size:11px;font-weight:700;cursor:pointer;font-family:"Nunito",sans-serif;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
+.rfm-share-btn:hover{background:rgba(255,255,255,.12)}
 .rfm-share-btn .sicon{font-size:18px}
 .rfm-progress{background:rgba(255,255,255,.05);border-radius:12px;padding:14px 16px}
 .rfm-progress-top{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.55);margin-bottom:8px}
-.rfm-progress-top strong{color:white}
 .rfm-prog-bar{background:rgba(255,255,255,.1);border-radius:50px;height:6px;overflow:hidden;margin-bottom:8px}
 .rfm-prog-fill{height:100%;background:linear-gradient(90deg,#D4A017,#F5C842);border-radius:50px;transition:width .8s ease}
 .rfm-prog-milestones{display:flex;justify-content:space-between}
 .rfm-prog-ms{font-size:10px;color:rgba(255,255,255,.4)}
 .rfm-prog-ms.reached{color:#4ade80;font-weight:700}
-
-/* ── MOBILE ── */
-@media(max-width:768px){
-  nav{padding:12px 20px}
-  nav.scrolled{padding:8px 20px}
-  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(253,250,244,.98);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:998}
-  .nav-links.open{display:flex}
-  .hamburger{display:flex}
-  .hero{padding:140px 20px 60px}
-  .form-row{grid-template-columns:1fr}
-  .form-card{padding:24px}
-  .footer-grid{grid-template-columns:1fr}
-  .steps-grid,.features-grid{grid-template-columns:1fr}
-  .rfbanner{left:12px;right:12px;max-width:100%}
-}
-@media(max-width:600px){.couple-grid{grid-template-columns:1fr 1fr !important}}
+@media(max-width:768px){.rfbanner,.women-sidebar{left:12px;right:12px;max-width:100%}.women-sidebar{bottom:250px}}
 </style>
 </head>
 <body>
@@ -241,10 +241,10 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
 
 <!-- TICKER -->
 <div class="ticker-wrap"><div class="ticker-track">
-  <span>✦ Only 300 founding member spots — Every Love Story Deserves a Forever — Join Now · First week FREE for founding members ✦</span>
-  <span>✦ Only 300 founding member spots — Every Love Story Deserves a Forever — Join Now · First week FREE for founding members ✦</span>
-  <span>✦ Only 300 founding member spots — Every Love Story Deserves a Forever — Join Now · First week FREE for founding members ✦</span>
-  <span>✦ Only 300 founding member spots — Every Love Story Deserves a Forever — Join Now · First week FREE for founding members ✦</span>
+  <span>🎉 300 Founding Members Strong — Platform opens soon · Create your profile now · 1 week free premium for early members ✦</span>
+  <span>🎉 300 Founding Members Strong — Platform opens soon · Create your profile now · 1 week free premium for early members ✦</span>
+  <span>🎉 300 Founding Members Strong — Platform opens soon · Create your profile now · 1 week free premium for early members ✦</span>
+  <span>🎉 300 Founding Members Strong — Platform opens soon · Create your profile now · 1 week free premium for early members ✦</span>
 </div></div>
 
 <!-- NAV -->
@@ -258,8 +258,8 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
     <a href="#how">How It Works</a>
     <a href="#features">Features</a>
     <a href="/support.html">Support</a>
-    <a href="#form-anchor" style="color:var(--royal);font-weight:700">Join Waitlist</a>
-    <a href="#form-anchor" class="nav-cta">Begin Your Forever — Join Now ✦</a>
+    <a href="https://beginforever.app" style="color:var(--royal);font-weight:700;display:flex;align-items:center;gap:5px;"><span style="background:rgba(59,7,100,.08);padding:5px 10px;border-radius:50px;border:1px solid rgba(59,7,100,.2)">🔐 Login / Register</span></a>
+    <a href="#form-anchor" class="nav-cta">Create My Profile ✦</a>
   </div>
 </nav>
 
@@ -272,19 +272,40 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
     <h1>Every Love Story<br/>Deserves a Forever</h1>
     <div class="hero-divider"></div>
     <p class="hero-verse">"There is a time for every purpose under heaven — a time to love."<br/>— Ecclesiastes 3:1,8</p>
-    <p class="hero-desc">India's first 100% ID-verified matrimony platform — open to all faiths, rooted in values, built on trust. Real people, real intentions, zero fake profiles.</p>
-    <a href="#form-anchor" class="hero-cta">✦ Begin Your Forever — Join Now ✦</a>
-    <p class="hero-cta-sub">First 300 members · 1 Week Premium Free</p>
-    <p style="font-size:12px;color:var(--muted);margin-top:8px;">🔒 No payment required · Takes 60 seconds</p>
+    <p class="hero-desc">India's first 100% ID-verified matrimony platform — open to all faiths. We've hit 300 founding members. Create your profile now and get early access when we open in 2 weeks.</p>
+    <a href="#form-anchor" class="hero-cta">✦ Create My Profile — Get Early Access</a>
+    <p class="hero-cta-sub" style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <span>🔒 Free to join · No payment needed</span>
+      <span>|</span>
+      <a href="https://beginforever.app" style="color:var(--royal);font-weight:700;text-decoration:none;background:rgba(59,7,100,.08);padding:6px 14px;border-radius:50px;border:1px solid rgba(59,7,100,.15);">🔐 Already registered? Login →</a>
+    </p>
   </div>
 </section>
 
+
+
 <!-- LAUNCH BANNER -->
 <div style="max-width:640px;margin:0 auto;padding:40px 24px 0;">
-  <div class="launch-banner reveal">
-    <h3>🔥 Limited to 300 Founding Members</h3>
-    <p style="color:var(--muted);margin-top:4px;">We go live the moment we hit 300 verified members. Be among the first — founding members get <strong>1 week free premium access</strong> and priority matching.</p>
-    <a href="/pricing.html" style="display:inline-block;margin-top:12px;color:var(--royal);font-weight:700;font-size:13px;text-decoration:none;border-bottom:2px solid var(--gold);">View Pricing Plans →</a>
+  <div id="milestonebannerA" class="milestone-banner reveal" style="background:#3B0764;border-radius:20px;padding:32px;text-align:center;position:relative;overflow:hidden;margin-bottom:16px;">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(212,160,23,.12),transparent 50%),radial-gradient(circle at 80% 50%,rgba(212,160,23,.08),transparent 50%);pointer-events:none"></div>
+    <div style="position:absolute;top:16px;left:10%;width:8px;height:8px;border-radius:50%;background:#F5C842;opacity:.6;animation:floatDot 3s ease-in-out infinite"></div>
+    <div style="position:absolute;top:24px;left:25%;width:6px;height:6px;border-radius:50%;background:#D4A017;opacity:.5;animation:floatDot 3.5s ease-in-out infinite .5s"></div>
+    <div style="position:absolute;top:12px;right:15%;width:10px;height:10px;border-radius:50%;background:#F5C842;opacity:.4;animation:floatDot 4s ease-in-out infinite 1s"></div>
+    <div style="position:absolute;bottom:20px;left:20%;width:7px;height:7px;border-radius:50%;background:#D4A017;opacity:.5;animation:floatDot 3.2s ease-in-out infinite .8s"></div>
+    <div style="position:absolute;bottom:16px;right:25%;width:9px;height:9px;border-radius:50%;background:#F5C842;opacity:.4;animation:floatDot 3.8s ease-in-out infinite .3s"></div>
+    <div style="position:relative;z-index:1">
+      <div style="font-size:42px;margin-bottom:8px;animation:bounceIn .6s ease both">🎉</div>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,23,.15);border:1px solid rgba(212,160,23,.35);border-radius:50px;padding:5px 16px;margin-bottom:14px;">
+        <span style="font-size:11px;color:#F5C842;font-weight:700;text-transform:uppercase;letter-spacing:2px;">300 Founding Members Reached</span>
+      </div>
+      <h3 style="font-family:'Cinzel',serif;color:white;font-size:22px;font-weight:700;margin-bottom:8px;line-height:1.3">We Did It. Your Chapter Begins Now.</h3>
+      <p style="color:rgba(255,255,255,.7);font-size:14px;margin-bottom:20px;line-height:1.7;max-width:460px;margin-left:auto;margin-right:auto">Three hundred hearts ready to find their forever. The early bird offer continues — 1 week free premium for everyone who creates a profile before we open.</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap">
+        <a href="#form-anchor" style="background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-weight:800;font-size:14px;padding:13px 28px;border-radius:50px;text-decoration:none;box-shadow:0 4px 20px rgba(212,160,23,.35)">✦ Create My Profile — Free</a>
+        <a href="https://beginforever.app" style="background:rgba(255,255,255,.1);color:white;font-weight:600;font-size:13px;padding:13px 20px;border-radius:50px;text-decoration:none;border:1px solid rgba(255,255,255,.2)">🔐 Login</a>
+      </div>
+      <p style="color:rgba(255,255,255,.4);font-size:11px;margin-top:14px">Early access opens in 2 weeks · 1 week free premium for early profiles</p>
+    </div>
   </div>
 </div>
 
@@ -292,10 +313,13 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
 <div style="max-width:640px;margin:0 auto;padding:24px 24px 0;">
   <div class="reveal" style="background:linear-gradient(135deg,var(--royal),#280840);border-radius:20px;padding:32px;text-align:center;box-shadow:0 8px 30px rgba(59,7,100,.3);">
     <div style="font-size:32px;margin-bottom:12px;">✦</div>
-    <h3 style="font-family:'Cinzel',serif;color:white;font-size:22px;margin-bottom:8px;">Be a Founding Member</h3>
-    <p style="color:rgba(255,255,255,.7);font-size:14px;margin-bottom:20px;">The app launches when we hit 300 verified members. Join the waitlist now and be first in line.</p>
-    <a href="#form-anchor" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:15px;padding:14px 32px;border-radius:50px;text-decoration:none;box-shadow:0 4px 15px rgba(212,160,23,.4);">✦ Join the Waitlist — It's Free</a>
-    <p style="color:rgba(255,255,255,.5);font-size:12px;margin-top:12px;">100% ID verified · Free to join · All faiths welcome</p>
+    <h3 style="font-family:'Cinzel',serif;color:white;font-size:22px;margin-bottom:8px;">Create Your Profile. Get Early Access.</h3>
+    <p style="color:rgba(255,255,255,.7);font-size:14px;margin-bottom:20px;">Platform opens in 2 weeks. Register your profile now and get first access — plus 1 week premium free.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="#form-anchor" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:15px;padding:14px 32px;border-radius:50px;text-decoration:none;box-shadow:0 4px 15px rgba(212,160,23,.4);">✦ Create My Profile — Free</a>
+      <a href="https://beginforever.app" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:white;font-weight:700;font-size:15px;padding:14px 24px;border-radius:50px;text-decoration:none;border:1px solid rgba(255,255,255,.25)">🔐 Login / Register</a>
+    </div>
+    <p style="color:rgba(255,255,255,.5);font-size:12px;margin-top:12px;">100% ID verified · All faiths welcome · Free to join</p>
   </div>
 </div>
 
@@ -324,7 +348,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
       <div style="background:rgba(255,255,255,.07);border:1px solid rgba(212,160,23,.2);border-radius:12px;padding:12px;text-align:center;">
         <div style="font-family:'Cinzel',serif;font-size:22px;color:#F5C842;font-weight:900;">5</div>
         <div style="font-size:10px;color:rgba(255,255,255,.55);margin:3px 0;">friends join</div>
-        <div style="font-size:12px;font-weight:700;color:#4ade80;">You get 1 month free</div>
+        <div style="font-size:12px;font-weight:700;color:#4ade80;">You get 10 days free</div>
       </div>
     </div>
     <div style="background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.25);border-radius:10px;padding:9px 12px;margin-bottom:12px;font-size:12px;color:rgba(255,255,255,.85);">🎁 Your friend also gets <strong style="color:#F5C842">1 week free</strong> when they join through your link</div>
@@ -342,33 +366,25 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
   <p style="font-family:'EB Garamond',serif;font-style:italic;color:var(--muted);margin-top:24px;font-size:16px;line-height:1.7;">"Two are better than one, because they have a good reward for their toil."<br/>— Ecclesiastes 4:9</p>
 </div>
 
-<!-- GALLERY STRIP -->
-<div class="gallery-strip">
-  <p style="text-align:center;font-family:'Cinzel',serif;font-size:clamp(18px,3vw,26px);color:var(--royal);margin-bottom:28px;padding:0 24px" class="reveal">Every Faith. Every Heart. One Platform.</p>
-  <div style="overflow:hidden">
-    <div class="gallery-track">
-      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal),#280840)"><div class="gallery-item-bg">🙏</div><div class="gallery-caption"><h4>Faith-First Matching</h4><p>Rooted in shared values</p></div></div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#280840,var(--royal-mid))"><div class="gallery-item-bg">🪪</div><div class="gallery-caption"><h4>ID Verified</h4><p>Zero fake profiles</p></div></div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal-mid),var(--gold-deep))"><div class="gallery-item-bg">💍</div><div class="gallery-caption"><h4>Real Intentions</h4><p>Genuine matrimony only</p></div></div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,var(--charcoal),var(--royal))"><div class="gallery-item-bg">☕</div><div class="gallery-caption"><h4>Virtual Coffee Dates</h4><p>Safe first connections</p></div></div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal),var(--royal-light))"><div class="gallery-item-bg">🌍</div><div class="gallery-caption"><h4>All Faiths Welcome</h4><p>Hindu · Muslim · Sikh · Christian</p></div></div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#280840,var(--royal-mid))"><div class="gallery-item-bg">🌟</div><div class="gallery-caption"><h4>300 Founding Members</h4><p>Be part of the beginning</p></div></div>
-      <!-- duplicate for seamless loop -->
-      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal),#280840)"><div class="gallery-item-bg">🙏</div><div class="gallery-caption"><h4>Faith-First Matching</h4><p>Rooted in shared values</p></div></div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#280840,var(--royal-mid))"><div class="gallery-item-bg">🪪</div><div class="gallery-caption"><h4>ID Verified</h4><p>Zero fake profiles</p></div></div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal-mid),var(--gold-deep))"><div class="gallery-item-bg">💍</div><div class="gallery-caption"><h4>Real Intentions</h4><p>Genuine matrimony only</p></div></div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,var(--charcoal),var(--royal))"><div class="gallery-item-bg">☕</div><div class="gallery-caption"><h4>Virtual Coffee Dates</h4><p>Safe first connections</p></div></div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,var(--royal),var(--royal-light))"><div class="gallery-item-bg">🌍</div><div class="gallery-caption"><h4>All Faiths Welcome</h4><p>Hindu · Muslim · Sikh · Christian</p></div></div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#280840,var(--royal-mid))"><div class="gallery-item-bg">🌟</div><div class="gallery-caption"><h4>300 Founding Members</h4><p>Be part of the beginning</p></div></div>
+
+<!-- REFERRAL BANNER -->
+<section class="reveal" style="padding:0 24px 48px;background:var(--ivory-warm);">
+  <div style="max-width:640px;margin:0 auto;border-radius:24px;overflow:hidden;box-shadow:0 16px 50px rgba(59,7,100,.12);">
+    <img src="/banners/referral.png" alt="Refer More, Earn More Love — Begin Forever" style="width:100%;display:block;border-radius:24px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <!-- Fallback -->
+    <div style="display:none;background:linear-gradient(135deg,#FF6B9D,#C850C0,#4158D0);padding:40px 28px;border-radius:24px;text-align:center;flex-direction:column;align-items:center;">
+      <h2 style="font-family:'Cinzel',serif;color:white;font-size:28px;font-weight:900;margin-bottom:8px;">Refer More,<br>Earn More Love! 💝</h2>
+      <p style="color:rgba(255,255,255,.9);font-size:14px;margin-bottom:20px;">Refer 3 friends → 7 days free · Refer 5 friends → 14 days free</p>
+      <a href="#form-anchor" style="background:white;color:#C850C0;font-weight:800;font-size:15px;padding:14px 32px;border-radius:50px;text-decoration:none;">Invite Today!</a>
     </div>
   </div>
-</div>
+</section>
 
 <!-- WAITLIST FORM -->
 <section class="form-section" id="form-anchor">
-  <h2>✦ Begin Your Forever — Join Now</h2>
+  <h2>✦ Create Your Profile — Get Early Access</h2>
   <div id="rfFormHint" style="display:none;background:linear-gradient(135deg,#3B0764,#5B1A8A);color:white;border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:14px;text-align:center;border:1px solid rgba(212,160,23,.4);">🎁 <strong>Join first</strong> — your unique referral link generates automatically after you sign up!</div>
-  <p style="text-align:center;color:var(--muted);margin-bottom:40px;">We launch when we hit <strong>300 members</strong>. Founding members get 1 week premium access free. <strong>Claim your spot now.</strong></p>
+  <p style="text-align:center;color:var(--muted);margin-bottom:40px;">Platform opens in 2 weeks. Register your profile now and be among the first to find your match — with <strong>1 week free premium access</strong> included.</p>
   <div class="form-card">
     <form id="waitlistForm" novalidate>
       <div class="form-section-label">Personal Details</div>
@@ -399,13 +415,6 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
       <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:16px;">🔒 Your details are safe. We never share your information.</p>
     </form>
   </div>
-  <div class="trust-row">
-    <div class="trust-badge"><div style="font-size:24px;margin-bottom:6px;">🪪</div><div style="font-size:12px;font-weight:600;">100% Govt. ID Verified</div></div>
-    <div class="trust-badge"><div style="font-size:24px;margin-bottom:6px;">🛡️</div><div style="font-size:12px;font-weight:600;">Zero Fake Profiles</div></div>
-    <div class="trust-badge"><div style="font-size:24px;margin-bottom:6px;">🌍</div><div style="font-size:12px;font-weight:600;">All Faiths Welcome</div></div>
-    <div class="trust-badge"><div style="font-size:24px;margin-bottom:6px;">📍</div><div style="font-size:12px;font-weight:600;">Live Distance Matching</div></div>
-    <div class="trust-badge"><div style="font-size:24px;margin-bottom:6px;">☕</div><div style="font-size:12px;font-weight:600;">Virtual Coffee Dates</div></div>
-  </div>
 </section>
 
 <!-- HOW IT WORKS -->
@@ -435,8 +444,44 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section" style="background:linear-gradient(180deg,#FDFAF4,#F5ECD4,#FDFAF4);padding:60px 24px;">
-  <h2 style="font-family:'Cinzel',serif;font-size:28px;color:var(--royal);margin-bottom:12px;text-align:center" class="reveal">What Our Members Say</h2>
+<!-- FEMALE SAFETY SECTION -->
+<section style="background:linear-gradient(135deg,#FBEAF0,#FDF3D0);padding:70px 24px;">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:40px">
+      <span style="display:inline-block;background:#FBEAF0;border:1px solid #F4C0D1;color:#72243E;font-size:11px;font-weight:700;padding:5px 16px;border-radius:50px;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">For Women</span>
+      <h2 style="font-family:'Cinzel',serif;font-size:clamp(22px,4vw,34px);color:#3B0764;margin-bottom:10px;" class="reveal">A Platform Built Around Your Safety.</h2>
+      <p style="color:#72243E;font-size:15px;max-width:520px;margin:0 auto;line-height:1.7" class="reveal">Every man on Begin Forever is government ID-verified before his profile is approved. You control everything.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+      <div class="reveal" style="background:white;border-radius:18px;padding:24px;border:1px solid #F4C0D1;text-align:center">
+        <div style="font-size:36px;margin-bottom:12px">🪪</div>
+        <h3 style="font-family:'Cinzel',serif;font-size:16px;color:#3B0764;margin-bottom:8px">Every Man Is Verified</h3>
+        <p style="font-size:13px;color:#72243E;line-height:1.7">Government ID checked and profile manually approved before he can see your profile. No exceptions.</p>
+      </div>
+      <div class="reveal" style="background:white;border-radius:18px;padding:24px;border:1px solid #F4C0D1;text-align:center">
+        <div style="font-size:36px;margin-bottom:12px">🔒</div>
+        <h3 style="font-family:'Cinzel',serif;font-size:16px;color:#3B0764;margin-bottom:8px">You Control Who Sees You</h3>
+        <p style="font-size:13px;color:#72243E;line-height:1.7">Your photos are private by default. Share them only with people you choose to connect with.</p>
+      </div>
+      <div class="reveal" style="background:white;border-radius:18px;padding:24px;border:1px solid #F4C0D1;text-align:center">
+        <div style="font-size:36px;margin-bottom:12px">🚫</div>
+        <h3 style="font-family:'Cinzel',serif;font-size:16px;color:#3B0764;margin-bottom:8px">No Unsolicited Messages</h3>
+        <p style="font-size:13px;color:#72243E;line-height:1.7">Only people you've shown interest in can message you. Zero spam. Zero strangers in your inbox.</p>
+      </div>
+      <div class="reveal" style="background:white;border-radius:18px;padding:24px;border:1px solid #F4C0D1;text-align:center">
+        <div style="font-size:36px;margin-bottom:12px">👨‍👩‍👧</div>
+        <h3 style="font-family:'Cinzel',serif;font-size:16px;color:#3B0764;margin-bottom:8px">Family Can Be Involved</h3>
+        <p style="font-size:13px;color:#72243E;line-height:1.7">Register for a family member or have family help manage your profile. We're built for how India searches for matches.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px" class="reveal">
+      <a href="#form-anchor" style="display:inline-flex;align-items:center;gap:8px;background:#993556;color:white;font-weight:800;font-size:15px;padding:14px 32px;border-radius:50px;text-decoration:none;box-shadow:0 4px 20px rgba(153,53,86,.3)">✦ Create My Profile — Free</a>
+      <p style="color:#72243E;font-size:12px;margin-top:10px">+ 1 week free premium for early members</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
   <p style="text-align:center;color:var(--muted);margin-bottom:40px;font-size:15px">Real stories from real people</p>
   <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
     <div class="reveal" style="background:#FFFFFF;border-radius:20px;padding:28px;box-shadow:0 4px 24px rgba(59,7,100,.06);border:1px solid rgba(212,160,23,.15);text-align:center;"><div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3B0764,#D4A017);margin:0 auto 12px;border:3px solid var(--gold);"></div><p style="font-size:14px;color:var(--royal);line-height:1.7;font-style:italic;margin-bottom:12px;">"Finally a platform where I feel truly safe. The ID verification gives me so much confidence."</p><p style="font-family:'Cinzel',serif;font-size:13px;color:var(--royal);font-weight:700;">Priya M.</p><p style="font-size:11px;color:var(--gold);">⭐⭐⭐⭐⭐ · Mumbai</p></div>
@@ -455,13 +500,27 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
   </div>
 </section>
 
+<!-- 300 FOUNDERS BANNER -->
+<section class="reveal" style="padding:48px 24px;background:var(--ivory-deep);">
+  <div style="max-width:900px;margin:0 auto;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(59,7,100,.18);position:relative;">
+    <img src="/banners/300-founders.png" alt="300 Founders Achieved — Begin Forever" style="width:100%;display:block;border-radius:24px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <!-- Fallback if image not yet uploaded -->
+    <div style="display:none;background:linear-gradient(135deg,#3B0764,#7B1FA2);padding:48px 32px;border-radius:24px;text-align:center;flex-direction:column;align-items:center;">
+      <div style="font-size:48px;margin-bottom:12px;">🎉</div>
+      <h2 style="font-family:'Cinzel',serif;color:white;font-size:clamp(28px,5vw,48px);font-weight:900;margin-bottom:8px;">300 Founders<br><span style="color:#F5C842">Achieved!</span></h2>
+      <p style="color:rgba(255,255,255,.8);font-size:16px;margin-bottom:24px;">Get 1 week premium free — for early access registrants only.</p>
+      <a href="#form-anchor" style="background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-weight:800;font-size:16px;padding:16px 40px;border-radius:50px;text-decoration:none;">Register Now »</a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA SECTION -->
 <section class="download-section">
   <p style="font-family:'Cinzel',serif;font-size:11px;text-transform:uppercase;letter-spacing:3px;margin-bottom:8px;">Your Story Starts Now</p>
-  <h2>Your Forever Is Waiting</h2>
-  <p>We're building something beautiful. Once we hit 300 founding members, the platform goes live — with ID-verified profiles, faith-first matching, and private messaging.</p>
+  <h2>Your Chapter Begins Now</h2>
+  <p>300 founding members strong. The platform opens in 2 weeks. Create your verified profile now and get early access — plus 1 week free premium included.</p>
   <div style="margin-top:24px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-    <a href="#form-anchor" class="store-btn"><div><strong>✦ Begin Your Forever — Join Now</strong></div></a>
+    <a href="#form-anchor" class="store-btn"><div><strong>✦ Create My Profile — Get Early Access</strong></div></a>
     <a href="/pricing.html" class="store-btn"><div><strong>View Pricing →</strong></div></a>
   </div>
 </section>
@@ -475,7 +534,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
       <p style="font-size:13px;line-height:1.6;">Faith-first. Verified. For every heart.</p>
       <p class="footer-verse">"Two are better than one." — Ecclesiastes 4:9</p>
     </div>
-    <div class="footer-col"><h4>Platform</h4><a href="#">Home</a><a href="#how">How It Works</a><a href="#features">Features</a><a href="/pricing.html">Pricing</a><a href="#form-anchor">Join Waitlist</a></div>
+    <div class="footer-col"><h4>Platform</h4><a href="#">Home</a><a href="#how">How It Works</a><a href="#features">Features</a><a href="/pricing.html">Pricing</a><a href="#form-anchor">Create Profile</a></div>
     <div class="footer-col"><h4>Community</h4><a href="/coming-soon.html">Singles Meet</a><a href="/coming-soon.html">City Groups</a><a href="/coming-soon.html">Faith Events</a></div>
     <div class="footer-col"><h4>Legal</h4><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="/safety.html">Safety Guidelines</a></div>
   </div>
@@ -489,6 +548,23 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
   </div>
 </footer>
 
+<!-- ── WOMEN SAFETY SIDEBAR BANNER ── -->
+<div class="women-sidebar" id="womenBanner">
+  <div class="wsb-box">
+    <button class="wsb-close" onclick="dismissWomen()">✕</button>
+    <p class="wsb-tag">✦ For Women</p>
+    <h2 class="wsb-title">Your safety is our<br/>highest priority.</h2>
+    <div class="wsb-points">
+      <div class="wsb-point"><span>🪪</span>Every man govt. ID verified before approval</div>
+      <div class="wsb-point"><span>🔒</span>Your photos private by default — you decide</div>
+      <div class="wsb-point"><span>🚫</span>No unsolicited messages from anyone</div>
+      <div class="wsb-point"><span>👁️</span>You control who can see your profile</div>
+    </div>
+    <a href="#form-anchor" class="wsb-btn" onclick="dismissWomen()">✦ Create My Profile — Free</a>
+    <p style="text-align:center;color:rgba(255,255,255,.4);font-size:10px;margin-top:8px">+ 1 week free premium included</p>
+  </div>
+</div>
+
 <!-- ── REFERRAL FLOATING BANNER ── -->
 <div class="rfbanner" id="rfBanner">
   <div class="rfb-box">
@@ -497,7 +573,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
     <h2 class="rfb-title">Share the love.<br/><span>Get free premium.</span></h2>
     <div class="rfb-tiers">
       <div class="rfb-tier"><div class="tn">3</div><div class="tl">friends join</div><div class="tr">+7 days free</div></div>
-      <div class="rfb-tier"><div class="tn">5</div><div class="tl">friends join</div><div class="tr">+1 month free</div></div>
+      <div class="rfb-tier"><div class="tn">5</div><div class="tl">friends join</div><div class="tr">+10 days free</div></div>
     </div>
     <div class="rfb-dual">🎁 Your friend also gets <strong> 1 week free </strong> when they join</div>
     <button class="rfb-btn" onclick="rfOpenModal()">✦ Get My Referral Link</button>
@@ -512,7 +588,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
     <p class="rfm-sub">Share your unique link. When friends sign up through it, you both get rewarded — automatically.</p>
     <div class="rfm-tiers">
       <div class="rfm-tier"><div class="mtn">3</div><div class="mtl">friends join</div><div class="mtr">You get +7 days free</div></div>
-      <div class="rfm-tier"><div class="mtn">5</div><div class="mtl">friends join</div><div class="mtr">You get +1 month free</div></div>
+      <div class="rfm-tier"><div class="mtn">5</div><div class="mtl">friends join</div><div class="mtr">You get +10 days free</div></div>
     </div>
     <div class="rfm-dual">🎁 Every friend who joins through your link also gets <strong style="color:#F5C842">1 week free premium</strong> — a gift for both of you.</div>
     <div class="rfm-linkbox">
@@ -532,12 +608,13 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
       <div class="rfm-progress-top"><span>Friends joined via your link</span><strong id="rfCount">0 / 5</strong></div>
       <div class="rfm-prog-bar"><div class="rfm-prog-fill" id="rfProgFill" style="width:0%"></div></div>
       <div class="rfm-prog-milestones">
-        <div class="rfm-prog-ms" id="ms3">3 = 1 week free</div>
-        <div class="rfm-prog-ms" id="ms5">5 = 1 month free</div>
+        <div class="rfm-prog-ms" id="ms3">3 friends = 7 days free</div>
+        <div class="rfm-prog-ms" id="ms5">5 friends = 10 days free</div>
       </div>
     </div>
   </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -643,18 +720,29 @@ document.getElementById('waitlistForm').addEventListener('submit',async function
   }
 });
 
+
+// WOMEN BANNER
+function dismissWomen(){document.getElementById('womenBanner').classList.remove('wsin');sessionStorage.setItem('womenDismissed','1');}
+setTimeout(function(){
+  if(!sessionStorage.getItem('womenDismissed')){
+    document.getElementById('womenBanner').classList.add('wsin');
+    setTimeout(function(){
+      if(!sessionStorage.getItem('womenDismissed')){
+        document.getElementById('womenBanner').classList.remove('wsin');
+        setTimeout(function(){if(!sessionStorage.getItem('womenDismissed'))document.getElementById('womenBanner').classList.add('wsin');},20000);
+      }
+    },12000);
+  }
+},15000);
+
 // REFERRAL BANNER
 function rfDismiss(){document.getElementById('rfBanner').classList.remove('rfin');sessionStorage.setItem('rfDismissed','1');}
 function rfOpenModal(){
   rfDismiss();
   var saved=localStorage.getItem('bf_ref_code');
   if(!saved){
-    // No referral link yet — scroll to form and flash hint
     document.getElementById('form-anchor').scrollIntoView({behavior:'smooth'});
-    setTimeout(function(){
-      var hint=document.getElementById('rfFormHint');
-      if(hint){hint.style.display='block';setTimeout(function(){hint.style.display='none';},5000);}
-    },800);
+    setTimeout(function(){var hint=document.getElementById('rfFormHint');if(hint){hint.style.display='block';setTimeout(function(){hint.style.display='none';},5000);}},800);
     return;
   }
   document.getElementById('rfModal').classList.add('rfmopen');
@@ -662,7 +750,6 @@ function rfOpenModal(){
 }
 function rfCloseModal(){document.getElementById('rfModal').classList.remove('rfmopen');}
 document.getElementById('rfModal').addEventListener('click',function(e){if(e.target===this)rfCloseModal();});
-// Show banner after 10s (returning users with saved code see it immediately useful; new users get redirected to form)
 setTimeout(function(){
   if(!sessionStorage.getItem('rfDismissed')&&!document.getElementById('successScreen').classList.contains('show')){
     document.getElementById('rfBanner').classList.add('rfin');
