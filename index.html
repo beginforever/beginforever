@@ -810,5 +810,6 @@ function shareVia(platform){
 const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 </script>
+  <script src="referral-fix.js"></script>
 </body>
 </html>
