@@ -258,6 +258,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
     <a href="#how">How It Works</a>
     <a href="#features">Features</a>
     <a href="/support.html">Support</a>
+<a href="/blog/why-id-verified-matrimony-matters.html">Blog</a>
     <a href="https://beginforever.app" style="color:var(--royal);font-weight:700;display:flex;align-items:center;gap:5px;"><span style="background:rgba(59,7,100,.08);padding:5px 10px;border-radius:50px;border:1px solid rgba(59,7,100,.2)">🔐 Login / Register</span></a>
     <a href="https://beginforever.app" class="nav-cta">Create My Profile ✦</a>
   </div>
@@ -411,7 +412,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
     <div style="background:rgba(59,7,100,.04);border:1px solid rgba(212,160,23,.2);border-radius:12px;padding:12px 16px;margin-bottom:24px;font-size:12px;color:var(--muted);line-height:1.7;">
       🔒 Your ID is encrypted and stored securely. It is never shown to other members — only our admin team reviews it for verification purposes.
     </div>
-    <a href="https://beginforever.app" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:16px;padding:18px 32px;border-radius:60px;text-decoration:none;box-shadow:0 8px 30px rgba(212,160,23,.4);margin-bottom:14px;">✦ Create My Profile — Free</a>
+    <a href="https://beginforever.app" onclick="fbq('track','Lead')" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:16px;padding:18px 32px;border-radius:60px;text-decoration:none;box-shadow:0 8px 30px rgba(212,160,23,.4);margin-bottom:14px;">✦ Create My Profile — Free</a>
     <p style="text-align:center;font-size:13px;color:var(--muted);">Already registered? <a href="https://beginforever.app" style="color:var(--royal);font-weight:700;text-decoration:none;">Login →</a></p>
     <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--ivory-deep);display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
       <span style="font-size:12px;color:var(--muted);">📧 Email verified</span>
@@ -572,6 +573,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 24px 3
     </div>
     <div class="footer-col"><h4>Platform</h4><a href="#">Home</a><a href="#how">How It Works</a><a href="#features">Features</a><a href="/pricing.html">Pricing</a><a href="https://beginforever.app">Create Profile</a></div>
     <div class="footer-col"><h4>Community</h4><a href="/coming-soon.html">Singles Meet</a><a href="/coming-soon.html">City Groups</a><a href="/coming-soon.html">Faith Events</a></div>
+    <div class="footer-col"><h4>Blog</h4><a href="/blog/why-id-verified-matrimony-matters.html">Why ID Verification Matters</a><a href="/blog/safe-matrimony-for-women-india.html">Safety for Women</a><a href="/blog/matrimony-for-all-faiths-india.html">All Faiths Welcome</a><a href="/blog/best-matrimony-app-india-2026.html">vs Shaadi &amp; Jeevansathi</a></div>
     <div class="footer-col"><h4>Legal</h4><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="/safety.html">Safety Guidelines</a></div>
   </div>
   <div class="footer-bottom">
@@ -660,26 +662,12 @@ const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
 // NAV
 const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks');
-hamburger.addEventListener('click',()=>navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50));
-
-// DENOMINATION TOGGLE
-function toggleDenom(){var r=document.getElementById('religion').value;document.getElementById('denomWrap').classList.toggle('show',r==='Christian');}
-
-// CANDIDATE TOGGLE
-document.getElementById('registering_for').addEventListener('change',function(){document.getElementById('candidateWrap').classList.toggle('show',this.value&&this.value!=='Myself');});
-
-// CITY DATA
-const cityData={'Andhra Pradesh':['Visakhapatnam','Vijayawada','Guntur','Nellore','Tirupati','Rajahmundry','Kakinada','Other'],'Assam':['Guwahati','Silchar','Dibrugarh','Jorhat','Other'],'Bihar':['Patna','Gaya','Muzaffarpur','Bhagalpur','Other'],'Chhattisgarh':['Raipur','Bhilai','Bilaspur','Other'],'Delhi':['New Delhi','Central Delhi','South Delhi','North Delhi','East Delhi','West Delhi','Other'],'Goa':['Panaji','Margao','Vasco da Gama','Other'],'Gujarat':['Ahmedabad','Surat','Vadodara','Rajkot','Gandhinagar','Other'],'Haryana':['Gurugram','Faridabad','Ambala','Hisar','Other'],'Himachal Pradesh':['Shimla','Dharamshala','Manali','Other'],'Jharkhand':['Ranchi','Jamshedpur','Dhanbad','Other'],'Karnataka':['Bengaluru','Mysuru','Mangalore','Hubli','Other'],'Kerala':['Kochi','Thiruvananthapuram','Kozhikode','Thrissur','Kollam','Kottayam','Alappuzha','Other'],'Madhya Pradesh':['Bhopal','Indore','Jabalpur','Gwalior','Other'],'Maharashtra':['Mumbai','Pune','Nagpur','Nashik','Thane','Navi Mumbai','Other'],'Manipur':['Imphal','Other'],'Meghalaya':['Shillong','Tura','Other'],'Mizoram':['Aizawl','Other'],'Nagaland':['Kohima','Dimapur','Other'],'Odisha':['Bhubaneswar','Cuttack','Rourkela','Other'],'Punjab':['Ludhiana','Amritsar','Jalandhar','Patiala','Chandigarh','Other'],'Rajasthan':['Jaipur','Jodhpur','Udaipur','Kota','Other'],'Tamil Nadu':['Chennai','Coimbatore','Madurai','Tiruchirappalli','Salem','Other'],'Telangana':['Hyderabad','Warangal','Nizamabad','Other'],'Tripura':['Agartala','Other'],'Uttar Pradesh':['Lucknow','Kanpur','Agra','Varanasi','Noida','Ghaziabad','Other'],'Uttarakhand':['Dehradun','Haridwar','Rishikesh','Other'],'West Bengal':['Kolkata','Howrah','Durgapur','Siliguri','Other'],'Other / Outside India':['Other']};
-document.getElementById('state').addEventListener('change',function(){const c=document.getElementById('city');c.innerHTML='<option value="" disabled selected>Select city</option>';(cityData[this.value]||[]).forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;c.appendChild(o)});});
-
-// VALIDATION
-function validate(){let valid=true;const forWho=document.getElementById('registering_for').value;const rules=[{id:'fullName',errId:'err-fullName',test:v=>v.trim().length>=2},{id:'age',errId:'err-age',test:v=>{const n=parseInt(v);return n>=18&&n<=70}},{id:'gender',errId:'err-gender',test:v=>v!==''},{id:'religion',errId:'err-religion',test:v=>v!==''},{id:'email',errId:'err-email',test:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},{id:'state',errId:'err-state',test:v=>v!==''},{id:'city',errId:'err-city',test:v=>v!==''},{id:'registering_for',errId:'err-registering_for',test:v=>v!==''},];if(forWho&&forWho!=='Myself')rules.push({id:'candidate_name',errId:'err-candidate_name',test:v=>v.trim().length>=2});rules.forEach(r=>{const f=document.getElementById(r.id),e=document.getElementById(r.errId);if(!e)return;const ok=r.test(f.value);f.classList.toggle('error',!ok);e.classList.toggle('show',!ok);if(!ok)valid=false;});return valid;}
-document.querySelectorAll('.form-field').forEach(f=>{['input','change'].forEach(evt=>f.addEventListener(evt,()=>{f.classList.remove('error');const e=document.getElementById('err-'+f.id);if(e)e.classList.remove('show');}));});
+if(hamburger)hamburger.addEventListener('click',function(){navLinks.classList.toggle('open');});
+if(navLinks)navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navLinks.classList.remove('open');});});
+window.addEventListener('scroll',function(){var n=document.getElementById('mainNav');if(n)n.classList.toggle('scrolled',window.scrollY>50);});
 
 // CONFETTI
-function launchConfetti(){const colors=['#FF2D78','#FF6B4A','#F5A623','#FFD700','#D4A017','#7C3AAD','#fff'];const c=document.getElementById('confettiContainer');for(let i=0;i<100;i++){const p=document.createElement('div');p.className='confetti-piece';p.style.cssText=`left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};width:${4+Math.random()*8}px;height:${4+Math.random()*8}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.5+Math.random()*2.5}s;animation-delay:${Math.random()*.8}s;`;c.appendChild(p);}setTimeout(()=>c.innerHTML='',5000);}
+function launchConfetti(){var colors=['#FF2D78','#FF6B4A','#F5A623','#FFD700','#D4A017','#7C3AAD','#fff'];var c=document.getElementById('confettiContainer');for(var i=0;i<100;i++){var p=document.createElement('div');p.className='confetti-piece';p.style.cssText='left:'+Math.random()*100+'%;background:'+colors[Math.floor(Math.random()*colors.length)]+';width:'+(4+Math.random()*8)+'px;height:'+(4+Math.random()*8)+'px;border-radius:'+(Math.random()>.5?'50%':'2px')+';animation-duration:'+(1.5+Math.random()*2.5)+'s;animation-delay:'+(Math.random()*.8)+'s;';if(c)c.appendChild(p);}setTimeout(function(){var c=document.getElementById('confettiContainer');if(c)c.innerHTML='';},5000);}
 
 // REFERRAL SYSTEM
 var currentReferralCode='';
@@ -696,12 +684,7 @@ function setReferralLink(code){
   var link='https://beginforever.in/?ref='+code;
   currentReferralCode=code;currentReferralLink=link;
   var inp=document.getElementById('rfLinkInput');if(inp)inp.value=link;
-  var sinp=document.getElementById('successReferralLink');if(sinp)sinp.value=link;
   localStorage.setItem('bf_ref_code',code);localStorage.setItem('bf_ref_link',link);
-}
-
-async function saveReferralCode(code,email){
-  try{await sb.from('waitlist').update({referral_code:code}).eq('email',email);}catch(e){}
 }
 
 function loadReferralProgress(code){
@@ -715,7 +698,6 @@ function loadReferralProgress(code){
   }).catch(function(){});
 }
 
-// Check arriving via referral
 (function(){
   var params=new URLSearchParams(window.location.search);
   var ref=params.get('ref');
@@ -723,39 +705,6 @@ function loadReferralProgress(code){
   var saved=localStorage.getItem('bf_ref_link');
   if(saved){setReferralLink(localStorage.getItem('bf_ref_code'));loadReferralProgress(localStorage.getItem('bf_ref_code'));}
 })();
-
-function showSuccess(name,email){
-  document.getElementById('waitlistForm').style.display='none';
-  document.getElementById('successName').textContent=name;
-  document.getElementById('successEmail').textContent=email;
-  document.getElementById('successScreen').classList.add('show');
-  launchConfetti();
-  fbq('track','Lead'); // ✅ Meta Pixel Lead event preserved
-  var code=generateReferralCode(name,email);
-  setReferralLink(code);
-  saveReferralCode(code,email);
-  loadReferralProgress(code);
-  var refBy=localStorage.getItem('bf_referred_by');
-  if(refBy){sb.from('waitlist').update({referred_by:refBy}).eq('email',email).catch(function(){});}
-  document.getElementById('successScreen').scrollIntoView({behavior:'smooth',block:'center'});
-}
-
-// FORM SUBMIT
-document.getElementById('waitlistForm').addEventListener('submit',async function(e){
-  e.preventDefault();if(!validate())return;
-  const btn=document.getElementById('submitBtn');btn.disabled=true;btn.classList.add('loading');
-  const forWho=document.getElementById('registering_for').value;
-  const data={full_name:document.getElementById('fullName').value.trim(),age:parseInt(document.getElementById('age').value),email:document.getElementById('email').value.trim(),state:document.getElementById('state').value,city:document.getElementById('city').value,phone:document.getElementById('phone').value.trim(),religion:document.getElementById('religion').value,denomination:document.getElementById('denomination')?document.getElementById('denomination').value:'',gender:document.getElementById('gender').value,registering_for:forWho,candidate_name:forWho!=='Myself'?document.getElementById('candidate_name').value.trim():'',};
-  try{
-    const{error}=await sb.from('waitlist').insert(data);if(error)throw error;
-    fetch('https://neftjxvovxocqabxjvme.supabase.co/functions/v1/smart-function',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),}).catch(e=>console.warn('Email note:',e));
-    showSuccess(data.full_name.split(' ')[0],data.email);
-  }catch(err){
-    fetch('https://neftjxvovxocqabxjvme.supabase.co/functions/v1/smart-function',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),}).catch(e=>console.warn('Email note:',e));
-    showSuccess(data.full_name.split(' ')[0],data.email);
-  }
-});
-
 
 // WOMEN BANNER
 function dismissWomen(){document.getElementById('womenBanner').classList.remove('wsin');sessionStorage.setItem('womenDismissed','1');}
@@ -776,19 +725,16 @@ function rfDismiss(){document.getElementById('rfBanner').classList.remove('rfin'
 function rfOpenModal(){
   rfDismiss();
   var saved=localStorage.getItem('bf_ref_code');
-  if(!saved){
-    document.getElementById('form-anchor').scrollIntoView({behavior:'smooth'});
-    setTimeout(function(){var hint=document.getElementById('rfFormHint');if(hint){hint.style.display='block';setTimeout(function(){hint.style.display='none';},5000);}},800);
-    return;
-  }
+  if(!saved){document.getElementById('form-anchor').scrollIntoView({behavior:'smooth'});return;}
   document.getElementById('rfModal').classList.add('rfmopen');
   loadReferralProgress(saved);
 }
 function rfCloseModal(){document.getElementById('rfModal').classList.remove('rfmopen');}
-document.getElementById('rfModal').addEventListener('click',function(e){if(e.target===this)rfCloseModal();});
+var rfModalEl=document.getElementById('rfModal');
+if(rfModalEl)rfModalEl.addEventListener('click',function(e){if(e.target===this)rfCloseModal();});
 setTimeout(function(){
-  if(!sessionStorage.getItem('rfDismissed')&&!document.getElementById('successScreen').classList.contains('show')){
-    document.getElementById('rfBanner').classList.add('rfin');
+  if(!sessionStorage.getItem('rfDismissed')){
+    var rb=document.getElementById('rfBanner');if(rb)rb.classList.add('rfin');
   }
 },10000);
 
@@ -807,8 +753,8 @@ function shareVia(platform){
 }
 
 // SCROLL REVEAL
-const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
 </script>
   <script src="referral-fix.js"></script>
 </body>
