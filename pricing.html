@@ -126,10 +126,9 @@ footer a{color:var(--gold);text-decoration:none}
 <!-- BILLING TOGGLE -->
 <div class="billing-toggle">
   <div class="billing-pills">
-    <button class="billing-pill active" onclick="setBilling('monthly')">Monthly</button>
-    <button class="billing-pill" onclick="setBilling('quarterly')">3 Months <span class="save-badge">Save 10%</span></button>
-    <button class="billing-pill" onclick="setBilling('halfyearly')">6 Months <span class="save-badge">Save 20%</span></button>
-    <button class="billing-pill" onclick="setBilling('yearly')">Yearly <span class="save-badge">Save 30%</span></button>
+    <button class="billing-pill active" onclick="setBilling(this,'monthly')">Monthly</button>
+    <button class="billing-pill" onclick="setBilling(this,'quarterly')">3 Months</button>
+    <button class="billing-pill" onclick="setBilling(this,'halfyearly')">6 Months</button>
   </div>
 </div>
 
@@ -150,24 +149,26 @@ footer a{color:var(--gold);text-decoration:none}
     <!-- BASIC -->
     <div class="plan-card">
       <div class="plan-name">Basic</div>
-      <div class="plan-tagline">For members ready to start connecting with matches</div>
+      <div class="plan-tagline">Get started on your journey</div>
       <div class="plan-price">
         <span class="currency">₹</span><span class="amount" id="basic-price">499</span>
-        <span class="period" id="basic-period">/ month</span>
-        <div class="per-month" id="basic-subtext" style="display:none;"></div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px;" id="basic-period">/month · 30 days</div>
+        <div style="display:none;margin-top:6px;" id="basic-badge"></div>
       </div>
-      <a href="https://beginforever.app" class="plan-cta plan-cta-outline" onclick="fbq&&fbq('track','InitiateCheckout')">Get Basic ✦</a>
+      <a href="https://beginforever.app" class="plan-cta plan-cta-outline" onclick="fbq&&fbq('track','InitiateCheckout')">Choose Basic</a>
       <ul class="plan-features">
-        <li><span class="icon">✅</span>Verified profile — visible to all approved members</li>
-        <li><span class="icon">✅</span>Browse unlimited verified profiles</li>
-        <li><span class="icon">✅</span>Send up to 10 interest requests / month</li>
-        <li><span class="icon">✅</span>Accept unlimited interests received</li>
-        <li><span class="icon">✅</span>In-app messaging with mutual matches</li>
-        <li><span class="icon">✅</span>Faith & denomination filters</li>
-        <li><span class="icon">✅</span>Photo privacy controls</li>
-        <li><span class="icon">❌</span><span style="color:var(--muted)">Priority visibility in search</span></li>
-        <li><span class="icon">❌</span><span style="color:var(--muted)">See who viewed your profile</span></li>
-        <li><span class="icon">❌</span><span style="color:var(--muted)">Unlimited interest requests</span></li>
+        <li><span class="icon">✅</span>Browse all verified profiles</li>
+        <li><span class="icon">✅</span>Unlimited interests</li>
+        <li><span class="icon">✅</span>Unlimited chat with matches</li>
+        <li><span class="icon">✅</span>See who liked you (count only)</li>
+        <li><span class="icon">✅</span>Basic filters (age, city, religion)</li>
+        <li><span class="icon">✅</span>Standard support</li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">See who liked you — names & photos</span></li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">Faith filter — control who reaches you</span></li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">See profile viewers</span></li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">Contact reveal (phone & email)</span></li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">Read receipts on messages</span></li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">Advanced filters + Priority support</span></li>
       </ul>
     </div>
 
@@ -175,23 +176,25 @@ footer a{color:var(--gold);text-decoration:none}
     <div class="plan-card featured">
       <div class="plan-badge">Most Popular</div>
       <div class="plan-name">Premium</div>
-      <div class="plan-tagline">Full access — everything you need to find your person</div>
+      <div class="plan-tagline">Find your forever, faster</div>
       <div class="plan-price">
-        <span class="currency">₹</span><span class="amount" id="premium-price">999</span>
-        <span class="period" id="premium-period">/ month</span>
-        <div class="per-month" id="premium-subtext" style="display:none;"></div>
+        <span class="currency">₹</span><span class="amount" id="premium-price">899</span>
+        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;" id="premium-period">/month · 30 days</div>
+        <div style="display:none;margin-top:6px;" id="premium-badge"></div>
       </div>
-      <a href="https://beginforever.app" class="plan-cta plan-cta-gold" onclick="fbq&&fbq('track','InitiateCheckout')">Get Premium ✦</a>
+      <a href="https://beginforever.app" class="plan-cta plan-cta-gold" onclick="fbq&&fbq('track','InitiateCheckout')">Choose Premium ✦</a>
       <ul class="plan-features">
-        <li><span class="icon">✅</span>Everything in Basic</li>
-        <div class="plan-divider"></div>
-        <li><span class="icon">⭐</span><strong>Priority visibility</strong> — appear higher in search results</li>
-        <li><span class="icon">⭐</span><strong>See who viewed</strong> your profile</li>
-        <li><span class="icon">⭐</span><strong>Unlimited</strong> interest requests</li>
-        <li><span class="icon">⭐</span><strong>Read receipts</strong> on messages</li>
-        <li><span class="icon">⭐</span><strong>Advanced filters</strong> — education, occupation, height</li>
-        <li><span class="icon">⭐</span><strong>Virtual Coffee Date</strong> — structured first conversation tool</li>
-        <li><span class="icon">⭐</span>Priority customer support</li>
+        <li><span class="icon">✅</span>Browse all verified profiles</li>
+        <li><span class="icon">✅</span>Unlimited interests</li>
+        <li><span class="icon">✅</span>Unlimited chat with matches</li>
+        <li><span class="icon">✅</span>See who liked you — names &amp; photos</li>
+        <li><span class="icon">⭐</span><strong>Faith filter</strong> — control who reaches you</li>
+        <li><span class="icon">✅</span>See profile viewers</li>
+        <li><span class="icon">✅</span>Contact reveal (phone &amp; email)</li>
+        <li><span class="icon">✅</span>Read receipts on messages</li>
+        <li><span class="icon">✅</span>Advanced filters (edu, occ, lifestyle)</li>
+        <li><span class="icon">✅</span>Priority support</li>
+        <li><span class="icon">✅</span>Profile boost (1 per week)</li>
       </ul>
     </div>
 
@@ -247,7 +250,7 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>How does the founding member free week work?</span><span class="arrow">v</span></div>
-    <div class="faq-a">If you registered before our platform launch, you get 1 week free on any paid plan — Basic or Premium, monthly or yearly. It's applied automatically at checkout. No coupon needed.</div>
+    <div class="faq-a">If you registered before our platform launch, you get 1 week free Premium automatically at launch — no coupon needed.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Can I cancel anytime?</span><span class="arrow">v</span></div>
@@ -262,8 +265,8 @@ footer a{color:var(--gold);text-decoration:none}
     <div class="faq-a">Subscriptions are non-refundable once activated, except where required by law. If a technical issue on our end prevents access for more than 72 hours, you can request a pro-rated credit at info@beginforever.in.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Is the yearly plan better value?</span><span class="arrow">v</span></div>
-    <div class="faq-a">Yes — the yearly plan saves you 30% compared to paying monthly. If you're serious about finding your person, it's the most cost-effective choice.</div>
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Which plan is best value?</span><span class="arrow">v</span></div>
+    <div class="faq-a">The 6 Months plan gives you the best saving — 27% off Basic and 33% off Premium. If you're serious about finding your person, it's the most cost-effective choice. Secured by Razorpay · Cancel anytime.</div>
   </div>
 </div>
 
@@ -287,43 +290,37 @@ var currentBilling = 'monthly';
 
 var prices = {
   basic: {
-    monthly:    { amount: 499,  period: '/ month',  subtext: '' },
-    quarterly:  { amount: 449,  period: '/ month',  subtext: '₹1,347 billed every 3 months' },
-    halfyearly: { amount: 399,  period: '/ month',  subtext: '₹2,394 billed every 6 months' },
-    yearly:     { amount: 349,  period: '/ month',  subtext: '₹4,188 billed yearly' }
+    monthly:    { amount: '499',   label: '/month · 30 days',   badge: '',        subtext: '' },
+    quarterly:  { amount: '1,299', label: '/3 months · 90 days', badge: '13% off', subtext: '' },
+    halfyearly: { amount: '2,199', label: '/6 months · 180 days', badge: '27% off', subtext: '' }
   },
   premium: {
-    monthly:    { amount: 999,  period: '/ month',  subtext: '' },
-    quarterly:  { amount: 899,  period: '/ month',  subtext: '₹2,697 billed every 3 months' },
-    halfyearly: { amount: 799,  period: '/ month',  subtext: '₹4,794 billed every 6 months' },
-    yearly:     { amount: 699,  period: '/ month',  subtext: '₹8,388 billed yearly' }
+    monthly:    { amount: '899',   label: '/month · 30 days',   badge: '',        subtext: '' },
+    quarterly:  { amount: '2,157', label: '/3 months · 90 days', badge: '20% off', subtext: '' },
+    halfyearly: { amount: '3,613', label: '/6 months · 180 days', badge: '33% off', subtext: '' }
   }
 };
 
-function setBilling(period) {
+function setBilling(btn, period) {
   currentBilling = period;
-
-  // Update pill active state
   document.querySelectorAll('.billing-pill').forEach(function(el) {
     el.classList.remove('active');
   });
-  event.target.closest('.billing-pill').classList.add('active');
+  btn.classList.add('active');
 
-  // Update Basic
   var bp = prices.basic[period];
   document.getElementById('basic-price').textContent = bp.amount;
-  document.getElementById('basic-period').textContent = bp.period;
-  var bsub = document.getElementById('basic-subtext');
-  bsub.textContent = bp.subtext;
-  bsub.style.display = bp.subtext ? 'block' : 'none';
+  document.getElementById('basic-period').textContent = bp.label;
+  var bbadge = document.getElementById('basic-badge');
+  bbadge.textContent = bp.badge;
+  bbadge.style.cssText = bp.badge ? 'display:inline-block;background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;margin-top:4px;' : 'display:none';
 
-  // Update Premium
   var pp = prices.premium[period];
   document.getElementById('premium-price').textContent = pp.amount;
-  document.getElementById('premium-period').textContent = pp.period;
-  var psub = document.getElementById('premium-subtext');
-  psub.textContent = pp.subtext;
-  psub.style.display = pp.subtext ? 'block' : 'none';
+  document.getElementById('premium-period').textContent = pp.label;
+  var pbadge = document.getElementById('premium-badge');
+  pbadge.textContent = pp.badge;
+  pbadge.style.cssText = pp.badge ? 'display:inline-block;background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;margin-top:4px;' : 'display:none';
 }
 </script>
 
