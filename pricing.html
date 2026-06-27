@@ -3,125 +3,326 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Pricing - Begin Forever</title>
-<meta name="description" content="India first 100% ID-verified matrimony platform. All faiths welcome."/>
+<title>Pricing — Begin Forever</title>
+<meta name="description" content="Simple, transparent pricing for Begin Forever — India's first 100% ID-verified matrimony platform. Monthly, Quarterly and Yearly plans. Join free."/>
 <link rel="icon" href="/favicon.ico"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@700;800&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-:root{--royal:#3B0764;--royal-mid:#5B1A8A;--royal-light:#7C3AAD;--royal-pale:#EDE4F5;--gold:#D4A017;--gold-bright:#F5C842;--gold-pale:#FDF3D0;--gold-deep:#A07810;--ivory:#FDFAF4;--ivory-warm:#FAF6EE;--ivory-deep:#F2EBD9;--charcoal:#1A0A2E;--body-text:#2D1B4E;--muted:#7A6090;--green:#27ae60}
+:root{--royal:#3B0764;--royal-mid:#5B1A8A;--royal-light:#7C3AAD;--royal-pale:#EDE4F5;--gold:#D4A017;--gold-bright:#F5C842;--gold-pale:#FDF3D0;--ivory:#FDFAF4;--ivory-warm:#FAF6EE;--ivory-deep:#F2EBD9;--charcoal:#1A0A2E;--body-text:#2D1B4E;--muted:#7A6090;--green:#27ae60}
 *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
 body{font-family:'Nunito',sans-serif;background:var(--ivory);color:var(--body-text)}
-.page-header{background:linear-gradient(135deg,var(--royal),var(--charcoal));padding:40px 24px 60px;text-align:center;position:relative;overflow:hidden}
-.page-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(212,160,23,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(212,160,23,.06) 1px,transparent 1px);background-size:40px 40px}
-.page-header a.back{color:var(--gold);text-decoration:none;font-size:13px;position:relative;z-index:1}
-.page-header h1{font-family:'Cinzel',serif;color:white;font-size:clamp(28px,5vw,40px);margin-top:16px;position:relative;z-index:1}
-.page-header p{color:rgba(255,255,255,.7);font-size:15px;margin-top:8px;max-width:500px;margin-left:auto;margin-right:auto;position:relative;z-index:1}
-.founding-offer{max-width:700px;margin:-30px auto 40px;padding:24px 32px;background:linear-gradient(135deg,var(--gold-pale),#fff);border:2px solid var(--gold);border-radius:20px;text-align:center;box-shadow:0 8px 40px rgba(212,160,23,.2);position:relative;z-index:2}
-.founding-offer h3{font-family:'Cinzel',serif;color:var(--royal);font-size:20px;margin-bottom:8px}
-.founding-offer p{font-size:14px;color:var(--body-text);line-height:1.6}
-.founding-offer .badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);padding:6px 16px;border-radius:50px;font-size:12px;font-weight:800;margin-top:12px;letter-spacing:1px}
+
+/* NAV */
+nav{background:rgba(253,250,244,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,160,23,.15);padding:16px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{width:40px;height:40px;border-radius:8px}
+.nav-logo span{font-family:'Manrope',sans-serif;font-weight:800;font-size:17px;color:var(--royal);letter-spacing:-0.01em}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:700;font-size:13px;padding:9px 20px;border-radius:50px;text-decoration:none;box-shadow:0 4px 12px rgba(212,160,23,.3)}
+
+/* HERO */
+.page-hero{background:linear-gradient(160deg,var(--royal),#280840);padding:64px 24px 72px;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(212,160,23,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(212,160,23,.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,23,.12);border:1px solid rgba(212,160,23,.3);border-radius:50px;padding:5px 16px;font-size:11px;font-weight:700;color:var(--gold-bright);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.page-hero h1{font-family:'Cinzel',serif;color:white;font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:12px;position:relative;z-index:1}
+.page-hero p{color:rgba(255,255,255,.7);font-size:15px;max-width:500px;margin:0 auto;line-height:1.7;position:relative;z-index:1}
+
+/* TOGGLE */
+.billing-toggle{display:flex;align-items:center;justify-content:center;padding:40px 24px 0}
+.billing-pills{display:flex;background:white;border-radius:50px;padding:4px;gap:2px;box-shadow:0 2px 16px rgba(59,7,100,.1);border:1px solid var(--ivory-deep)}
+.billing-pill{padding:10px 20px;border-radius:50px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;border:none;background:transparent;transition:all .2s;white-space:nowrap;position:relative}
+.billing-pill.active{background:var(--royal);color:white;box-shadow:0 4px 12px rgba(59,7,100,.3)}
+.billing-pill .save-badge{background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-size:9px;font-weight:800;padding:2px 6px;border-radius:50px;margin-left:5px;text-transform:uppercase;letter-spacing:0.5px;vertical-align:middle}
+
+/* PLANS */
+.plans-section{max-width:1000px;margin:0 auto;padding:40px 24px 80px}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:48px}
+.plan-card{background:white;border-radius:24px;padding:32px;border:2px solid var(--ivory-deep);box-shadow:0 4px 20px rgba(59,7,100,.06);position:relative;transition:all .3s}
+.plan-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(59,7,100,.1)}
+.plan-card.featured{border-color:var(--gold);box-shadow:0 8px 40px rgba(212,160,23,.2)}
+.plan-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-size:11px;font-weight:800;padding:5px 18px;border-radius:50px;white-space:nowrap;letter-spacing:1px;text-transform:uppercase}
+.plan-name{font-family:'Cinzel',serif;font-size:22px;color:var(--royal);margin-bottom:6px}
+.plan-tagline{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.5}
+.plan-price{margin-bottom:24px}
+.plan-price .amount{font-family:'Cinzel',serif;font-size:48px;font-weight:900;color:var(--royal);line-height:1}
+.plan-price .currency{font-size:22px;vertical-align:top;margin-top:8px;display:inline-block}
+.plan-price .period{font-size:14px;color:var(--muted);margin-left:4px}
+.plan-price .per-month{font-size:12px;color:var(--muted);margin-top:4px}
+.plan-price .original{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:8px}
+.plan-cta{display:block;width:100%;padding:14px;border-radius:12px;font-weight:700;font-size:15px;text-align:center;text-decoration:none;margin-bottom:24px;border:none;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .3s}
+.plan-cta-gold{background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);box-shadow:0 4px 15px rgba(212,160,23,.35)}
+.plan-cta-gold:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,160,23,.45)}
+.plan-cta-outline{background:transparent;color:var(--royal);border:2px solid var(--royal-pale)}
+.plan-cta-outline:hover{background:var(--royal-pale)}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:10px}
+.plan-features li{font-size:13px;color:var(--body-text);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.plan-features li .icon{flex-shrink:0;font-size:14px;margin-top:1px}
+.plan-divider{border:none;border-top:1px solid var(--ivory-deep);margin:20px 0}
+
+/* FREE TIER */
+.free-tier{background:linear-gradient(135deg,var(--royal-pale),var(--ivory));border:2px solid rgba(59,7,100,.1);border-radius:24px;padding:32px;margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.free-tier h3{font-family:'Cinzel',serif;font-size:20px;color:var(--royal);margin-bottom:6px}
+.free-tier p{font-size:14px;color:var(--muted);line-height:1.6;max-width:480px}
+.free-tier a{display:inline-flex;align-items:center;gap:8px;background:var(--royal);color:white;font-weight:700;font-size:14px;padding:12px 24px;border-radius:50px;text-decoration:none;white-space:nowrap;transition:all .3s}
+.free-tier a:hover{background:var(--royal-mid);transform:translateY(-2px)}
+
+/* COMPARISON */
+.compare-section{max-width:900px;margin:0 auto;padding:0 24px 80px}
+.compare-section h2{font-family:'Cinzel',serif;font-size:26px;color:var(--royal);text-align:center;margin-bottom:32px}
+.compare-table{width:100%;border-collapse:collapse;border-radius:16px;overflow:hidden;box-shadow:0 4px 30px rgba(59,7,100,.08)}
+.compare-table th{background:var(--royal);color:white;font-family:'Cinzel',serif;font-size:13px;padding:16px 14px;text-align:left}
+.compare-table th:first-child{width:45%}
+.compare-table td{padding:14px;font-size:13px;border-bottom:1px solid var(--ivory-deep);vertical-align:middle}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:nth-child(even) td{background:rgba(59,7,100,.02)}
+.check{color:var(--green);font-size:16px}
+.cross{color:#e74c3c;font-size:16px}
+.partial{color:#E67E22;font-size:13px;font-weight:700}
+
+/* FAQ */
 .faq-section{max-width:700px;margin:0 auto;padding:0 24px 80px}
-.faq-section h2{font-family:'Cinzel',serif;font-size:24px;color:var(--royal);text-align:center;margin-bottom:8px}
-.faq-section .faq-sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:28px}
-.faq-item{background:white;border-radius:16px;margin-bottom:10px;border:1px solid var(--ivory-deep);overflow:hidden;transition:all .2s}
-.faq-item:hover{border-color:rgba(212,160,23,.3)}
-.faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:700;font-size:15px;color:var(--royal);gap:12px}
+.faq-section h2{font-family:'Cinzel',serif;font-size:26px;color:var(--royal);text-align:center;margin-bottom:8px}
+.faq-sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:28px}
+.faq-item{background:white;border-radius:16px;margin-bottom:10px;border:1px solid var(--ivory-deep);overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:700;font-size:14px;color:var(--royal);gap:12px}
+.faq-q:hover{background:rgba(212,160,23,.04)}
 .faq-q .arrow{font-size:18px;color:var(--gold);transition:transform .3s;flex-shrink:0}
 .faq-item.open .faq-q .arrow{transform:rotate(180deg)}
 .faq-a{display:none;padding:0 20px 18px;font-size:14px;color:var(--muted);line-height:1.8}
 .faq-item.open .faq-a{display:block}
-.cta-section{text-align:center;padding:70px 24px;background:linear-gradient(135deg,var(--royal),var(--charcoal));color:white}
+
+/* CTA */
+.cta-section{text-align:center;padding:72px 24px;background:linear-gradient(135deg,var(--royal),var(--charcoal));color:white}
 .cta-section h2{font-family:'Cinzel',serif;color:white;font-size:clamp(24px,4vw,36px);margin-bottom:12px}
 .cta-section p{color:rgba(255,255,255,.7);max-width:460px;margin:0 auto 28px;font-size:15px;line-height:1.7}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:16px;padding:16px 36px;border-radius:50px;text-decoration:none;box-shadow:0 6px 25px rgba(212,160,23,.35);transition:all .3s}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,160,23,.5)}
 .cta-section .verse{font-family:'EB Garamond',serif;font-style:italic;color:var(--gold);font-size:14px;margin-top:24px}
-.btn-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--royal);font-weight:800;font-size:16px;padding:16px 36px;border-radius:50px;text-decoration:none;box-shadow:0 6px 25px rgba(212,160,23,.35);transition:all .3s}
-.btn-cta:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,160,23,.5)}
-.footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid rgba(212,160,23,.15)}
-.footer a{color:var(--gold);text-decoration:none}
+
+footer{background:var(--charcoal);color:rgba(255,255,255,.6);padding:40px 24px;text-align:center;font-size:13px}
+footer a{color:var(--gold);text-decoration:none}
+
+@media(max-width:600px){nav{padding:14px 20px}.plans-grid{grid-template-columns:1fr}.free-tier{flex-direction:column}}
 </style>
 </head>
 <body>
-<div class="page-header">
-  <a href="/" class="back">Back to Begin Forever</a>
-  <h1>Simple, Faithful Pricing</h1>
-  <p>Transparent pricing designed for every stage of your journey. Launching with the platform.</p>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/logo.png" alt="Begin Forever" onerror="this.style.display='none'"/>
+    <span>Begin Forever</span>
+  </a>
+  <a href="https://beginforever.app" class="nav-cta">Create Profile ✦</a>
+</nav>
+
+<div class="page-hero">
+  <div style="position:relative;z-index:1;">
+    <div class="hero-eyebrow">✦ Pricing</div>
+    <h1>Simple, Faithful Pricing</h1>
+    <p>Transparent pricing for every stage of your journey. Start free — upgrade when you're ready.</p>
+  </div>
 </div>
-<div class="founding-offer">
-  <h3>Founding Member Offer</h3>
-  <p>Be among our <strong>first 300 members</strong> and get your <strong>first week completely free</strong> on any plan!</p>
-  <div class="badge">LIMITED TO FIRST 300 MEMBERS</div>
+
+<!-- BILLING TOGGLE -->
+<div class="billing-toggle">
+  <div class="billing-pills">
+    <button class="billing-pill active" onclick="setBilling(this,'monthly')">Monthly</button>
+    <button class="billing-pill" onclick="setBilling(this,'quarterly')">3 Months</button>
+    <button class="billing-pill" onclick="setBilling(this,'halfyearly')">6 Months</button>
+  </div>
 </div>
-<div style="max-width:700px;margin:0 auto 60px;padding:0 24px;">
-  <div style="background:linear-gradient(135deg,#3B0764,#5B1A8A);border-radius:24px;padding:32px;text-align:center;position:relative;overflow:hidden;border:1.5px solid rgba(212,160,23,.4);box-shadow:0 16px 50px rgba(59,7,100,.3);">
-    <div style="position:absolute;top:16px;left:12%;width:8px;height:8px;border-radius:50%;background:#F5C842;opacity:.5;"></div>
-    <div style="position:absolute;top:20px;right:18%;width:6px;height:6px;border-radius:50%;background:#D4A017;opacity:.4;"></div>
-    <div style="position:relative;z-index:1;">
-      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(212,160,23,.15);border:1px solid rgba(212,160,23,.4);border-radius:50px;padding:5px 16px;margin-bottom:14px;">
-        <span style="font-size:11px;color:#F5C842;font-weight:700;text-transform:uppercase;letter-spacing:2px;">Launching with the Platform</span>
-      </div>
-      <h3 style="font-family:'Cinzel',serif;color:white;font-size:22px;font-weight:700;margin-bottom:10px;line-height:1.3;">New Pricing Tiers Coming Soon</h3>
-      <p style="color:rgba(255,255,255,.75);font-size:14px;margin-bottom:20px;line-height:1.7;max-width:480px;margin-left:auto;margin-right:auto;">When the platform goes live, we will introduce <strong style="color:#F5C842;">Basic</strong> and <strong style="color:#F5C842;">Premium</strong> tiers designed for every stage of your journey.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:420px;margin:0 auto 20px;">
-        <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:18px 14px;text-align:center;">
-          <p style="font-family:'Cinzel',serif;font-size:16px;color:white;font-weight:700;margin-bottom:4px;">Basic</p>
-          <p style="font-size:12px;color:rgba(255,255,255,.55);margin-bottom:10px;">Browse and Connect</p>
-          <p style="font-size:11px;color:rgba(255,255,255,.7);line-height:1.6;">Profile - Browse - Express interest - Limited messages</p>
-        </div>
-        <div style="background:linear-gradient(145deg,rgba(212,160,23,.15),rgba(212,160,23,.08));border:1.5px solid rgba(212,160,23,.5);border-radius:16px;padding:18px 14px;text-align:center;position:relative;">
-          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-size:9px;font-weight:800;padding:3px 10px;border-radius:20px;white-space:nowrap;letter-spacing:1px;">RECOMMENDED</div>
-          <p style="font-family:'Cinzel',serif;font-size:16px;color:#F5C842;font-weight:700;margin-bottom:4px;">Premium</p>
-          <p style="font-size:12px;color:rgba(255,255,255,.55);margin-bottom:10px;">Full Access</p>
-          <p style="font-size:11px;color:rgba(255,255,255,.7);line-height:1.6;">Unlimited messages - Priority visibility - See who viewed - Virtual dates</p>
-        </div>
-      </div>
-      <div style="background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.3);border-radius:10px;padding:10px 16px;font-size:12px;color:#4ade80;margin-bottom:16px;display:inline-block;">
-        Founding members get <strong>1 week free on any plan</strong> guaranteed
-      </div>
-      <p style="color:rgba(255,255,255,.4);font-size:11px;">Full plan details, features and pricing will be published at launch</p>
+
+<div class="plans-section">
+
+  <!-- FREE TIER -->
+  <div class="free-tier">
+    <div>
+      <h3>Free — Always</h3>
+      <p>Create your verified profile, browse matches, and express interest — completely free, forever. No credit card needed.</p>
     </div>
+    <a href="https://beginforever.app">Create My Profile ✦</a>
+  </div>
+
+  <!-- PAID PLANS -->
+  <div class="plans-grid">
+
+    <!-- BASIC -->
+    <div class="plan-card">
+      <div class="plan-name">Basic</div>
+      <div class="plan-tagline">Get started on your journey</div>
+      <div class="plan-price">
+        <span class="currency">₹</span><span class="amount" id="basic-price">499</span>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px;" id="basic-period">/month · 30 days</div>
+        <div style="display:none;margin-top:6px;" id="basic-badge"></div>
+      </div>
+      <a href="https://beginforever.app" class="plan-cta plan-cta-outline" onclick="fbq&&fbq('track','InitiateCheckout')">Choose Basic</a>
+      <ul class="plan-features">
+        <li><span class="icon">✅</span>Browse all verified profiles</li>
+        <li><span class="icon">✅</span>Unlimited interests</li>
+        <li><span class="icon">✅</span>Unlimited chat with matches</li>
+        <li><span class="icon">✅</span>See who liked you (count only)</li>
+        <li><span class="icon">✅</span>Basic filters (age, city, religion)</li>
+        <li><span class="icon">✅</span>Standard support</li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">See who liked you — names & photos</span></li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">Faith filter — control who reaches you</span></li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">See profile viewers</span></li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">Contact reveal (phone & email)</span></li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">Read receipts on messages</span></li>
+        <li><span class="icon" style="opacity:.35">☆</span><span style="color:var(--muted);opacity:.6">Advanced filters + Priority support</span></li>
+      </ul>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="plan-card featured">
+      <div class="plan-badge">Most Popular</div>
+      <div class="plan-name">Premium</div>
+      <div class="plan-tagline">Find your forever, faster</div>
+      <div class="plan-price">
+        <span class="currency">₹</span><span class="amount" id="premium-price">899</span>
+        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;" id="premium-period">/month · 30 days</div>
+        <div style="display:none;margin-top:6px;" id="premium-badge"></div>
+      </div>
+      <a href="https://beginforever.app" class="plan-cta plan-cta-gold" onclick="fbq&&fbq('track','InitiateCheckout')">Choose Premium ✦</a>
+      <ul class="plan-features">
+        <li><span class="icon">✅</span>Browse all verified profiles</li>
+        <li><span class="icon">✅</span>Unlimited interests</li>
+        <li><span class="icon">✅</span>Unlimited chat with matches</li>
+        <li><span class="icon">✅</span>See who liked you — names &amp; photos</li>
+        <li><span class="icon">⭐</span><strong>Faith filter</strong> — control who reaches you</li>
+        <li><span class="icon">✅</span>See profile viewers</li>
+        <li><span class="icon">✅</span>Contact reveal (phone &amp; email)</li>
+        <li><span class="icon">✅</span>Read receipts on messages</li>
+        <li><span class="icon">✅</span>Advanced filters (edu, occ, lifestyle)</li>
+        <li><span class="icon">✅</span>Priority support</li>
+        <li><span class="icon">✅</span>Profile boost (1 per week)</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- FOUNDING MEMBER NOTE -->
+  <div style="background:linear-gradient(135deg,var(--gold-pale),white);border:2px solid var(--gold);border-radius:16px;padding:20px 24px;text-align:center;margin-bottom:40px">
+    <p style="font-size:15px;color:var(--royal);line-height:1.7"><strong>✦ Founding Member Benefit</strong> — Every verified member who joined before launch gets <strong>1 week free on any plan</strong>. No coupon needed — applied automatically at checkout.</p>
+  </div>
+
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="compare-section">
+  <h2>Plan Comparison</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Free</th>
+        <th>Basic</th>
+        <th>Premium</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Verified profile</strong></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td><strong>Browse profiles</strong></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td><strong>Send interests</strong></td><td>3 / month</td><td>10 / month</td><td>Unlimited</td></tr>
+      <tr><td><strong>Receive interests</strong></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td><strong>In-app messaging</strong></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td><strong>Photo privacy controls</strong></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td><strong>Priority visibility</strong></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td><strong>See who viewed profile</strong></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td><strong>Read receipts</strong></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td><strong>Advanced filters</strong></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td><strong>Virtual Coffee Date tool</strong></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <h2>Pricing FAQs</h2>
+  <p class="faq-sub">Everything you need to know</p>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Is Begin Forever really free to join?</span><span class="arrow">v</span></div>
+    <div class="faq-a">Yes. Creating your verified profile, browsing matches, and receiving interests are always free. No credit card is needed to get started.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>What payment methods do you accept?</span><span class="arrow">v</span></div>
+    <div class="faq-a">All major methods via Razorpay — UPI (Google Pay, PhonePe, Paytm), Credit/Debit Cards (Visa, Mastercard, RuPay), Net Banking, and Wallets. All payments are secure and encrypted.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>How does the founding member free week work?</span><span class="arrow">v</span></div>
+    <div class="faq-a">If you registered before our platform launch, you get 1 week free Premium automatically at launch — no coupon needed.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Can I cancel anytime?</span><span class="arrow">v</span></div>
+    <div class="faq-a">Yes. Cancel anytime from your profile settings. You keep access until the end of your billing period. No cancellation fees, no lock-in.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Do subscriptions auto-renew?</span><span class="arrow">v</span></div>
+    <div class="faq-a">No. Subscriptions do not auto-renew. You manually renew at the end of each period. You'll receive a reminder before expiry.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Are refunds available?</span><span class="arrow">v</span></div>
+    <div class="faq-a">Subscriptions are non-refundable once activated, except where required by law. If a technical issue on our end prevents access for more than 72 hours, you can request a pro-rated credit at info@beginforever.in.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Which plan is best value?</span><span class="arrow">v</span></div>
+    <div class="faq-a">The 6 Months plan gives you the best saving — 27% off Basic and 33% off Premium. If you're serious about finding your person, it's the most cost-effective choice. Secured by Razorpay · Cancel anytime.</div>
   </div>
 </div>
-<section class="faq-section">
-  <h2>Frequently Asked Questions</h2>
-  <p class="faq-sub">Everything you need to know about Begin Forever</p>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>What makes Begin Forever different?</span><span class="arrow">v</span></div>
-    <div class="faq-a">India's first <strong>100% ID-verified matrimony platform open to all faiths</strong>. Every member submits a valid government ID and is manually approved. Zero fake profiles. Hindu, Muslim, Christian, Sikh, Jain, Buddhist - Begin Forever is built for you.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>How does the verification process work?</span><span class="arrow">v</span></div>
-    <div class="faq-a">Upload a government-issued photo ID (Aadhaar, PAN, Voter ID, Driving Licence, or Passport). Our admin team manually verifies every profile within 24-48 hours. Your ID is stored securely and never shared with other members.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Is my personal information safe?</span><span class="arrow">v</span></div>
-    <div class="faq-a">All data is encrypted using industry-standard SSL/TLS. Your phone and email are never shown to other members. Photos are private by default. We never sell or share your data. Read our full <a href="/privacy.html">Privacy Policy</a>.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Can my family help manage my profile?</span><span class="arrow">v</span></div>
-    <div class="faq-a">Yes! You can register on behalf of your son, daughter, brother, sister, or other relative. Family members can help manage the profile and review matches - because marriage is a commitment that involves families.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>What faiths and denominations are supported?</span><span class="arrow">v</span></div>
-    <div class="faq-a">Begin Forever welcomes <strong>all faiths</strong> - Hindu, Muslim, Christian, Sikh, Jain, Buddhist and others. For Christians, we support all denominations: Catholic, Protestant, Pentecostal, Baptist, CSI/CNI, Methodist, SDA, Orthodox, Mar Thoma, Brethren, Lutheran, Presbyterian, Anglican, Non-Denominational, and more.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>When will pricing plans be available?</span><span class="arrow">v</span></div>
-    <div class="faq-a">Pricing plans will be published at launch. We are working on <strong>Basic</strong> and <strong>Premium</strong> tiers. All founding members (first 300) are guaranteed 1 week free on any plan - no matter what the final pricing looks like.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Can I cancel my subscription anytime?</span><span class="arrow">v</span></div>
-    <div class="faq-a">Yes, cancel anytime. No lock-in contracts, no cancellation fees. You keep access until end of your billing period. You can also delete your account entirely from profile settings - all data removed within 30 days.</div>
-  </div>
-</section>
+
+<!-- CTA -->
 <section class="cta-section">
-  <h2>Ready to Begin Your Forever Story?</h2>
-  <p>Join hundreds of Indians across all faiths finding their life partner on a platform they can trust.</p>
-  <a href="https://beginforever.app" class="btn-cta">Create My Profile - Free</a>
-  <p class="verse">"Delight yourself in the Lord, and he will give you the desires of your heart." - Psalm 37:4</p>
+  <h2>Your Person Is Already Here</h2>
+  <p>Every profile is 100% ID-verified. Real people, real intentions. Start free — upgrade when you're ready.</p>
+  <a href="https://beginforever.app" class="cta-btn">✦ Create My Profile — Free</a>
+  <p class="verse">"Delight yourself in the Lord, and He will give you the desires of your heart." — Psalm 37:4</p>
 </section>
-<div class="footer">
-  <p>2026 Begin Forever - A brand of Kyomi - Pune, India - <a href="/">beginforever.in</a></p>
-  <p style="margin-top:6px;"><a href="/privacy.html">Privacy Policy</a> - <a href="/terms.html">Terms of Service</a> - <a href="/safety.html">Safety Guidelines</a></p>
-</div>
+
+<footer>
+  <p style="font-family:'Cinzel',serif;color:white;font-size:16px;margin-bottom:8px;">Begin Forever</p>
+  <p style="margin-bottom:12px;">India's first 100% ID-verified matrimony platform for all faiths.</p>
+  <p><a href="/">beginforever.in</a> · <a href="mailto:info@beginforever.in">info@beginforever.in</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+  <p style="margin-top:16px;color:rgba(255,255,255,.3);font-size:11px;">© 2026 Begin Forever · A brand of Kyomi · Pune, India</p>
+</footer>
+
+<script>
+var currentBilling = 'monthly';
+
+var prices = {
+  basic: {
+    monthly:    { amount: '499',   label: '/month · 30 days',   badge: '',        subtext: '' },
+    quarterly:  { amount: '1,299', label: '/3 months · 90 days', badge: '13% off', subtext: '' },
+    halfyearly: { amount: '2,199', label: '/6 months · 180 days', badge: '27% off', subtext: '' }
+  },
+  premium: {
+    monthly:    { amount: '899',   label: '/month · 30 days',   badge: '',        subtext: '' },
+    quarterly:  { amount: '2,157', label: '/3 months · 90 days', badge: '20% off', subtext: '' },
+    halfyearly: { amount: '3,613', label: '/6 months · 180 days', badge: '33% off', subtext: '' }
+  }
+};
+
+function setBilling(btn, period) {
+  currentBilling = period;
+  document.querySelectorAll('.billing-pill').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  btn.classList.add('active');
+
+  var bp = prices.basic[period];
+  document.getElementById('basic-price').textContent = bp.amount;
+  document.getElementById('basic-period').textContent = bp.label;
+  var bbadge = document.getElementById('basic-badge');
+  bbadge.textContent = bp.badge;
+  bbadge.style.cssText = bp.badge ? 'display:inline-block;background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;margin-top:4px;' : 'display:none';
+
+  var pp = prices.premium[period];
+  document.getElementById('premium-price').textContent = pp.amount;
+  document.getElementById('premium-period').textContent = pp.label;
+  var pbadge = document.getElementById('premium-badge');
+  pbadge.textContent = pp.badge;
+  pbadge.style.cssText = pp.badge ? 'display:inline-block;background:linear-gradient(135deg,#D4A017,#F5C842);color:#3B0764;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;margin-top:4px;' : 'display:none';
+}
+</script>
+
 </body>
 </html>
